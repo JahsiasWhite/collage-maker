@@ -1,0 +1,10 @@
+.header {
+  border-bottom: 3px solid var(--secondary-color);
+  /* height: var(--header-height); */
+}
+
+.title {
+  font-size: 30px;
+  text-align: left;
+  padding: 12px;
+}
