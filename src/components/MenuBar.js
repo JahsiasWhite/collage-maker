@@ -6,11 +6,11 @@ import Icon1 from '../icons/Icon1';
 
 const MenuBar = () => {
   const menuItems = [
-    { id: 1, icon: <Icon1 />, label: 'Button 1' },
-    { id: 2, icon: <Icon1 />, label: 'Button 2' },
-    { id: 3, icon: <Icon1 />, label: 'Button 3' },
-    { id: 4, icon: <Icon1 />, label: 'Button 4' },
-    { id: 5, icon: <Icon1 />, label: 'Button 5' },
+    { id: 1, icon: <Icon1 />, label: 'Upload' },
+    { id: 2, icon: <Icon1 />, label: 'Customize' },
+    { id: 3, icon: <Icon1 />, label: 'Layout' },
+    { id: 4, icon: <Icon1 />, label: 'Text' },
+    { id: 5, icon: <Icon1 />, label: 'Download/Export' },
   ];
 
   return (
