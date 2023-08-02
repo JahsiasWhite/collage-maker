@@ -3,13 +3,14 @@ import './App.css';
 import ImageCarousel from './components/ImageCarousel';
 import Header from './components/Header';
 import MenuBar from './components/MenuBar';
-import CollageExporter from './components/CollageExporter';
 import CollagePreview from './components/CollagePreview';
 import CollageEditor from './components/CollageEditor';
+import LayoutMenu from './components/LayoutMenu';
 
 function App() {
   const [images, setImages] = useState([]);
   const [collage, setCollage] = useState(null);
+  const [isCollageLayoutOpen, setIsCollageLayoutOpen] = useState(false);
 
   // Individual Images
   const handleImageUpload = (selectedImages) => {
@@ -23,16 +24,25 @@ function App() {
     setCollage(collage);
   };
 
+  // Function to toggle the visibility of LayoutMenu
+  const toggleCollageLayout = () => {
+    setIsCollageLayoutOpen((prev) => !prev);
+  };
+
   return (
     <div className="App">
       <Header></Header>
-      <MenuBar handleImageUpload={handleImageUpload} />{' '}
+      <MenuBar
+        handleImageUpload={handleImageUpload}
+        collage={collage}
+        toggleCollageLayout={toggleCollageLayout}
+      />{' '}
       <CollageEditor images={images} onEdit={handleImageEdit}></CollageEditor>
       <div className="middleContent">
         {images.length > 0 && <ImageCarousel images={images} />}
         {images.length > 0 && <CollagePreview collage={collage} />}
-        {images.length > 0 && <CollageExporter collage={collage} />}
       </div>
+      <LayoutMenu show={isCollageLayoutOpen} />
     </div>
   );
 }

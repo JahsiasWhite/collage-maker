@@ -5,6 +5,8 @@
   top: 0;
   position: relative;
   width: 100%;
+  background-color: var(--background-color);
+  z-index: 2;
 }
 
 .title {

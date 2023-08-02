@@ -8,16 +8,21 @@
   width: var(--menu-width);
   height: 100%;
   border-right: var(--border-size) solid var(--secondary-color);
+  background-color: var(--background-color);
 
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  z-index: 2;
 }
 
 /* TODO DELTE ALL THIS ITS IN MENUBAR */
+/* ! USED IN ALL THINGS THAT ARENT LABELS IE UPLOAD */
 .menuButton {
   height: 5%;
   margin-top: 20%;
+  width: 90%;
 
   display: flex;
   flex-direction: column;

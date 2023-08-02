@@ -1,0 +1,17 @@
+/* Styles for CustomizationMenu */
+.collageEditor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 200px; /* Set the width of the customization menu */
+  /* background-color: #fff; */
+  background-color: blue;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transform: translateX(-100%); /* Initially hidden outside the screen */
+  transition: transform 0.3s ease;
+}
+
+.open {
+  transform: translateX(0);
+}

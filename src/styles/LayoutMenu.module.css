@@ -1,0 +1,17 @@
+.layoutMenu {
+  z-index: 1;
+  background-color: red;
+  position: fixed;
+  top: calc(var(--header-height) + var(--border-size));
+  left: 0;
+  height: 94vh;
+  width: 300px; /* Set the width of the menu */
+  transform: translateX(-100%); /* Initially hide the menu to the left */
+  transition: transform 1s ease; /* Add a smooth transition */
+}
+
+.open {
+  background-color: blue;
+  /* transform: translateX(200%); */
+  transform: translateX(calc(var(--menu-width) + var(--border-size)));
+}

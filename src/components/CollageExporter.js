@@ -1,4 +1,6 @@
 import React from 'react';
+import styles from '../styles/MenuBar.module.css';
+import Icon1 from '../icons/Icon1';
 
 const CollageExporter = ({ collage }) => {
   // SVG EXPORT
@@ -45,8 +47,14 @@ const CollageExporter = ({ collage }) => {
   };
 
   return (
-    <div>
-      <button onClick={handleExport}>Export Collage</button>
+    // <div>
+    //   <button onClick={handleExport}>Export Collage</button>
+    // </div>
+    <div className={styles.menuButton} onClick={handleExport}>
+      <div className={styles.menuIcon}>
+        <Icon1></Icon1>
+      </div>
+      <div className={styles.menuLabel}>Download</div>
     </div>
   );
 };
