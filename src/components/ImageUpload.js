@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import styles from '../styles/ImageUpload.module.css';
 import styles from '../styles/MenuButton.module.css';
 import Icon1 from '../icons/Icon1';
 
@@ -42,20 +41,7 @@ const ImageUpload = ({ onImageUpload }) => {
 
   return (
     <div className={styles.menuButton}>
-      {/* <input
-        type="file"
-        accept="image/*"
-        multiple
-        onChange={handleImageChange}
-      /> */}
-      {/* <button className={styles.menuButton}>
-        <div className={styles.menuIcon}>
-          <Icon1 />
-        </div>
-        <div className={styles.menuLabel}>Upload</div>
-      </button> */}
-      <label for="file-upload" class={styles.menuLabel}>
-        {/* Custom Upload */}
+      <label htmlFor="file-upload" className={styles.menuLabel}>
         <div className={styles.menuIcon}>
           <Icon1 />
         </div>
@@ -68,18 +54,7 @@ const ImageUpload = ({ onImageUpload }) => {
         accept="image/*"
         multiple
         onChange={handleImageChange}
-      ></input>
-
-      {/* {selectedImages.length > 0 && (
-        <div>
-          <h2>Selected Images:</h2>
-          <div className="image-preview">
-            {selectedImages.map((imageSrc, index) => (
-              <img key={index} src={imageSrc} alt={`Upload number: ${index}`} />
-            ))}
-          </div>
-        </div>
-      )} */}
+      />
     </div>
   );
 };

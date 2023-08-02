@@ -1,9 +1,9 @@
 import React from 'react';
-import styles from '../styles/CollageDisplay.module.css';
+import styles from '../styles/ImageCarousel.module.css';
 
-const CollageDisplay = ({ images }) => {
+const ImageCarousel = ({ images }) => {
   return (
-    <div className={styles.collageDisplay}>
+    <div className={styles.imageCarousel}>
       {images.map((imageSrc, index) => (
         <img key={index} src={imageSrc} alt={`Upload number: ${index}`} />
       ))}
@@ -11,4 +11,4 @@ const CollageDisplay = ({ images }) => {
   );
 };
 
-export default CollageDisplay;
+export default ImageCarousel;

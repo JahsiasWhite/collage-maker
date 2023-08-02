@@ -1,4 +1,4 @@
-.collageDisplay {
+.imageCarousel {
   /* display: flex;
   flex-wrap: wrap;
   gap: 10px;
@@ -10,6 +10,6 @@
   left: 10vw;
 }
 
-.collageDisplay img {
+.imageCarousel img {
   margin-left: 10px;
 }
