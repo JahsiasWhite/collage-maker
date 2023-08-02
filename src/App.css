@@ -2,25 +2,48 @@
   --background-color: white;
   --secondary-color: black;
 
-  /* --header-height: 10vh; */
+  --border-size: 0.2vh;
+  --header-height: 5vh;
+  /* --menu-border-width: 0.2vw; */
+  --menu-width: 5vw;
 }
 
 html {
   background-color: var(--background-color);
+  height: 100%; /* Set the height of the root element */
+}
+
+body {
+  margin: 0; /* Remove default margin to avoid unexpected spacing */
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Arrange children in a column */
+  min-height: 100vh; /* Ensure the body fills the entire viewport height */
 }
 
 .App {
-  text-align: center;
-}
-
-.image-preview {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 20px;
+  flex: 1; /* Allow App to take all available vertical space */
+  display: flex; /* Use flexbox for layout inside App */
+  flex-direction: column; /* Arrange children in a column */
+  align-items: center; /* Center children horizontally */
 }
 
 img {
   max-width: 200px;
   max-height: 200px;
+}
+
+.middleContent {
+  background-color: #f5f5f5; /* Add a background color for better visibility */
+  border: 1px solid #ccc; /* Add a border for better visibility */
+  flex: 1; /* Allow middleContent to take all available vertical space */
+  display: flex; /* Use flexbox for layout inside middleContent */
+  align-items: center; /* Center children horizontally */
+  justify-content: center; /* Center children vertically */
+  overflow: auto; /* Add overflow to enable scrolling if content exceeds the available space */
+  position: fixed;
+  width: 94vw;
+  height: 94vh;
+  /* top: 5.1vh; */
+  top: calc(var(--header-height) + var(--border-size));
+  left: calc(var(--menu-width) + var(--border-size));
 }

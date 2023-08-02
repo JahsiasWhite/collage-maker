@@ -28,9 +28,11 @@ function App() {
       <Header></Header>
       <MenuBar handleImageUpload={handleImageUpload} />{' '}
       <CollageEditor images={images} onEdit={handleImageEdit}></CollageEditor>
-      {images.length > 0 && <CollagePreview collage={collage} />}
-      {images.length > 0 && <ImageCarousel images={images} />}
-      {images.length > 0 && <CollageExporter collage={collage} />}
+      <div className="middleContent">
+        {images.length > 0 && <ImageCarousel images={images} />}
+        {images.length > 0 && <CollagePreview collage={collage} />}
+        {images.length > 0 && <CollageExporter collage={collage} />}
+      </div>
     </div>
   );
 }
