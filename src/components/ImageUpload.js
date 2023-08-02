@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import styles from '../styles/ImageUpload.module.css';
+// import styles from '../styles/ImageUpload.module.css';
+import styles from '../styles/MenuButton.module.css';
+import Icon1 from '../icons/Icon1';
 
 const ImageUpload = ({ onImageUpload }) => {
   const [selectedImages, setSelectedImages] = useState([]);
@@ -39,13 +41,35 @@ const ImageUpload = ({ onImageUpload }) => {
   };
 
   return (
-    <div className={styles.imageUpload}>
-      <input
+    <div className={styles.menuButton}>
+      {/* <input
         type="file"
         accept="image/*"
         multiple
         onChange={handleImageChange}
-      />
+      /> */}
+      {/* <button className={styles.menuButton}>
+        <div className={styles.menuIcon}>
+          <Icon1 />
+        </div>
+        <div className={styles.menuLabel}>Upload</div>
+      </button> */}
+      <label for="file-upload" class={styles.menuLabel}>
+        {/* Custom Upload */}
+        <div className={styles.menuIcon}>
+          <Icon1 />
+        </div>
+        <div className={styles.menuLabel}>Upload</div>
+      </label>
+      <input
+        id="file-upload"
+        className={styles.menuItemInput}
+        type="file"
+        accept="image/*"
+        multiple
+        onChange={handleImageChange}
+      ></input>
+
       {/* {selectedImages.length > 0 && (
         <div>
           <h2>Selected Images:</h2>

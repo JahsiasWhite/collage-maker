@@ -1,0 +1,38 @@
+.menuItemInput {
+  display: none;
+}
+
+.menuButton {
+  height: 5%;
+  width: 90%;
+  margin-top: 20%;
+
+  /* border: none;
+  background-color: transparent;
+  cursor: pointer; */
+  transition: background-color 0.2s ease;
+}
+
+.menuButton:hover {
+  background-color: #e0e0e0;
+}
+
+.menuLabel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+/* SVG icon */
+.menuIcon {
+  width: 30px;
+  height: 30px;
+}
+
+.menuLabel {
+  font-size: 12px;
+  margin-top: 10px;
+}

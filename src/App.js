@@ -16,8 +16,9 @@ function App() {
   return (
     <div className="App">
       <Header></Header>
-      <MenuBar /> {/* Render the MenuBar component */}
-      <ImageUpload onImageUpload={handleImageUpload} />
+      <MenuBar handleImageUpload={handleImageUpload} />{' '}
+      {/* Render the MenuBar component */}
+      {/* <ImageUpload onImageUpload={handleImageUpload} /> */}
       {images.length > 0 && <CollageDisplay images={images} />}
       {images.length > 0 && <CollageExporter images={images} />}
     </div>

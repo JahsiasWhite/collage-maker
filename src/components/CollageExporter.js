@@ -125,7 +125,6 @@ const CollageExporter = ({ images }) => {
         'http://www.w3.org/2000/svg',
         'image'
       );
-      console.error(x, y, imageWidth, imageHeight);
       svgImage.setAttribute('x', x);
       svgImage.setAttribute('y', y);
       svgImage.setAttribute('width', imageWidth);
