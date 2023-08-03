@@ -9,7 +9,7 @@ import ImageUpload from '../components/ImageUpload';
 import CollageExporter from '../components/CollageExporter';
 import CollageLayout from '../components/CollageLayout';
 
-const MenuBar = ({ handleImageUpload, collage, toggleCollageLayout }) => {
+const MenuBar = ({ handleImageUpload, toggleCollageLayout }) => {
   // const [isCollageLayoutOpen, setIsCollageLayoutOpen] = useState(false);
 
   const menuItems = [
@@ -29,7 +29,7 @@ const MenuBar = ({ handleImageUpload, collage, toggleCollageLayout }) => {
         </button>
       ))}
       <ImageUpload onImageUpload={handleImageUpload} />
-      <CollageExporter collage={collage} />
+      <CollageExporter />
 
       {/* <button className={styles.menuButton} onClick={toggleCollageLayout}>
         <div className={styles.menuIcon}>

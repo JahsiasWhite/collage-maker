@@ -2,7 +2,11 @@ import React from 'react';
 import styles from '../styles/MenuBar.module.css';
 import Icon1 from '../icons/Icon1';
 
-const CollageExporter = ({ collage }) => {
+import { useCollageEditor } from './CollageEditorContext';
+
+const CollageExporter = () => {
+  const { collage } = useCollageEditor();
+
   // SVG EXPORT
   const handleExport = () => {
     if (collage) {

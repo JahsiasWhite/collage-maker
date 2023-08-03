@@ -1,6 +1,9 @@
 import React from 'react';
+import { useCollageEditor } from './CollageEditorContext';
 
-const CollagePreview = ({ collage }) => {
+const CollagePreview = () => {
+  const { collage } = useCollageEditor();
+
   return (
     <div>
       <h2>Preview:</h2>

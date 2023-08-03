@@ -12,19 +12,13 @@ import { CollageEditorProvider } from './components/CollageEditorContext'; // So
 
 function App() {
   const [images, setImages] = useState([]);
-  const [collage, setCollage] = useState(null);
+  // const [collage, setCollage] = useState(null);
   const [isCollageLayoutOpen, setIsCollageLayoutOpen] = useState(false);
 
   // Individual Images
   const handleImageUpload = (selectedImages) => {
     setImages(selectedImages);
-    setCollage(null); // Reset editedImage when new images are uploaded
-  };
-
-  // Saved Collage
-  // collage - Edited canvas as data URL
-  const handleImageEdit = (collage) => {
-    setCollage(collage);
+    // setCollage(null); // Reset editedImage when new images are uploaded
   };
 
   // Function to toggle the visibility of LayoutMenu
@@ -33,22 +27,21 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <Header></Header>
-      <MenuBar
-        handleImageUpload={handleImageUpload}
-        collage={collage}
-        toggleCollageLayout={toggleCollageLayout}
-      />{' '}
-      <CollageEditorProvider>
-        <CollageEditor images={images} onEdit={handleImageEdit}></CollageEditor>
+    <CollageEditorProvider>
+      <div className="App">
+        <Header></Header>
+        <MenuBar
+          handleImageUpload={handleImageUpload}
+          toggleCollageLayout={toggleCollageLayout}
+        />{' '}
+        <CollageEditor images={images}></CollageEditor>
         <div className="middleContent">
           {images.length > 0 && <ImageCarousel images={images} />}
-          {images.length > 0 && <CollagePreview collage={collage} />}
+          {images.length > 0 && <CollagePreview />}
         </div>
         <LayoutMenu show={isCollageLayoutOpen} />
-      </CollageEditorProvider>
-    </div>
+      </div>
+    </CollageEditorProvider>
   );
 }
 
