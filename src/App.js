@@ -7,6 +7,9 @@ import CollagePreview from './components/CollagePreview';
 import CollageEditor from './components/CollageEditor';
 import LayoutMenu from './components/LayoutMenu';
 
+// CONTEXT
+import { CollageEditorProvider } from './components/CollageEditorContext'; // So we can talk to the editor directly, NO PROP DRILLING YAY!!
+
 function App() {
   const [images, setImages] = useState([]);
   const [collage, setCollage] = useState(null);
@@ -37,12 +40,14 @@ function App() {
         collage={collage}
         toggleCollageLayout={toggleCollageLayout}
       />{' '}
-      <CollageEditor images={images} onEdit={handleImageEdit}></CollageEditor>
-      <div className="middleContent">
-        {images.length > 0 && <ImageCarousel images={images} />}
-        {images.length > 0 && <CollagePreview collage={collage} />}
-      </div>
-      <LayoutMenu show={isCollageLayoutOpen} />
+      <CollageEditorProvider>
+        <CollageEditor images={images} onEdit={handleImageEdit}></CollageEditor>
+        <div className="middleContent">
+          {images.length > 0 && <ImageCarousel images={images} />}
+          {images.length > 0 && <CollagePreview collage={collage} />}
+        </div>
+        <LayoutMenu show={isCollageLayoutOpen} />
+      </CollageEditorProvider>
     </div>
   );
 }

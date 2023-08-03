@@ -1,10 +1,23 @@
 import React from 'react';
 import styles from '../styles/LayoutMenu.module.css';
+import { useCollageEditor } from './CollageEditorContext';
 
-const CustomizationMenu = ({ show }) => {
+// export options
+// so we use it as options.randomize, options.border, etc...
+
+/*
+  show - boolean flag indicating wether the layout menu should be visible
+  options - Future idea to reduce prop drilling
+  randomize - Function from 'CollageEditor'
+  */
+
+const LayoutMenu = ({ show, options }) => {
+  const { randomize } = useCollageEditor(); //
+
   const customOptions = [
     // Define your customization options here
     // For example: { id: 1, label: 'Option 1', onClick: () => handleOptionClick(1) }
+    { id: 1, label: 'Randomize', onClick: () => randomize() },
   ];
 
   return (
@@ -20,4 +33,4 @@ const CustomizationMenu = ({ show }) => {
   );
 };
 
-export default CustomizationMenu;
+export default LayoutMenu;
