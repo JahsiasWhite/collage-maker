@@ -79,15 +79,8 @@ export const CollageEditorProvider = ({ children }) => {
   const calculateFreeformLayout = (images, canvasWidth, canvasHeight) => {
     const collageLayout = [];
 
-    //TODO something with this ?
-    // const maxPhotoWidth = 600;
-    // const minPhotoWidth = 200;
-    // const photoWidthMultiplier = maxPhotoWidth - minPhotoWidth;
-
+    // Calculates the random x and y positon of each image
     for (let i = 0; i < images.length; i++) {
-      // Generate random positions and sizes for each image
-      // const width = Math.random() * photoWidthMultiplier + minPhotoWidth; // Random width between 50 and 150,
-      // const height = Math.random() * 100 + 50; // Random height between 50 and 150
       const width = 500;
       const height = 500;
       const x = Math.random() * (canvasWidth - width); // Random x position within canvas width
@@ -102,10 +95,25 @@ export const CollageEditorProvider = ({ children }) => {
 
   // Uses the calculated freeformLayout to place the images on the canvas
   const drawFreeformLayout = async (images, context, freeformLayout) => {
+    // Shuffle the array randomly using Fisher-Yates Shuffle algorithm
+    // This randomizes the pictures in the z-direction. Preventing the same picture from being on top every time
+    // for (let i = images.length - 1; i > 0; i--) {
+    //   const j = Math.floor(Math.random() * (i + 1));
+    //   [images[i], images[j]] = [images[j], images[i]];
+    // }
+    // console.error('RUNING');
+
+    // Create an array of indices representing the order of images in shuffled order
+    const shuffledIndices = [...Array(images.length).keys()].sort(
+      () => Math.random() - 0.5
+    );
+
     // Draw images based on collageLayout
     for (let i = 0; i < images.length; i++) {
       const image = new Image();
-      image.src = images[i];
+      // image.src = images[i];
+      const imageIndex = shuffledIndices[i]; // Get the image index from shuffledIndices
+      image.src = images[imageIndex]; // Access the image using the shuffled index
 
       // Wait for the image to load before drawing
       await new Promise((resolve) => {
@@ -139,6 +147,8 @@ export const CollageEditorProvider = ({ children }) => {
       await calculateBlockLayout(images, canvas, context);
       // Draw images based on blockLayout
     } else if (mode === 'freeform') {
+      // TODO FIX BELOW, just put redundant code in a separate function
+      console.error('RUNNING');
       // Calculate layout for 'freeform' mode
       if (recalculateLayout) {
         // Calculate layout for 'freeform' mode
@@ -147,7 +157,6 @@ export const CollageEditorProvider = ({ children }) => {
           collageWidth,
           collageHeight
         );
-        console.error(freeformLayout);
         // Save the freeform layout in a state variable (collageLayoutState)
         setCollageLayoutState(freeformLayout);
 
