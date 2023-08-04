@@ -14,12 +14,13 @@ export const CollageEditorProvider = ({ children }) => {
 
   /* Layout Mode */
   const [mode, setMode] = useState('block'); // 'block' or 'freeform'
-
   // State variable to hold the freeform layout
   const [collageLayoutState, setCollageLayoutState] = useState([]);
-
   // State variable to track if the collage layout needs to be recalculated
   const [recalculateLayout, setRecalculateLayout] = useState(true);
+
+  /* Flag to tell whether to randomize the pictures */
+  const [randomizeFlag, setrandomizeFlag] = useState(false);
 
   // Function to trigger the recalculation of the freeform layout
   const triggerRecalculateLayout = () => {
@@ -51,8 +52,8 @@ export const CollageEditorProvider = ({ children }) => {
 
   /* RANDOMIZE THE ORDER OF THE PICTURES */
   const randomize = () => {
-    // Implement your randomization logic here
-    // console.error('HI');
+    triggerRecalculateLayout();
+    setrandomizeFlag(!randomizeFlag);
   };
 
   /* Change the height of the collage */
@@ -188,6 +189,7 @@ export const CollageEditorProvider = ({ children }) => {
         mode,
         toggleMode,
         triggerRecalculateLayout,
+        randomizeFlag,
       }}
     >
       {children}
