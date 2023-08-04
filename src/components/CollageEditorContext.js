@@ -17,10 +17,12 @@ export const CollageEditorProvider = ({ children }) => {
   // State variable to hold the freeform layout
   const [collageLayoutState, setCollageLayoutState] = useState([]);
   // State variable to track if the collage layout needs to be recalculated
+  // Kind of a hack but I need it or else the preview doesn't get updated correctly when randomizing
   const [recalculateLayout, setRecalculateLayout] = useState(true);
 
-  /* Flag to tell whether to randomize the pictures */
-  const [randomizeFlag, setrandomizeFlag] = useState(false);
+  /* Flag to tell whether an edit was made and that the canvas should be re-rendered */
+  // The value doesn't matter since we use it as a toggle
+  const [editMade, setEditMade] = useState(false);
 
   // Function to trigger the recalculation of the freeform layout
   const triggerRecalculateLayout = () => {
@@ -53,21 +55,24 @@ export const CollageEditorProvider = ({ children }) => {
   /* RANDOMIZE THE ORDER OF THE PICTURES */
   const randomize = () => {
     triggerRecalculateLayout();
-    setrandomizeFlag(!randomizeFlag);
+    setEditMade(!editMade);
   };
 
   /* Change the height of the collage */
   const changeHeight = (height) => {
     setCollageHeight(height);
+    setEditMade(!editMade);
   };
 
   /* Change the width of the collage */
   const changeWidth = (width) => {
     setCollageWidth(width);
+    setEditMade(!editMade);
   };
 
   const toggleMode = (mode) => {
     setMode(mode);
+    setEditMade(!editMade);
     // Call calculateCollageLayout here?
   };
 
@@ -130,6 +135,7 @@ export const CollageEditorProvider = ({ children }) => {
 
   // Function to render the canvas based on the selected mode
   const renderCanvas = async (images) => {
+    console.error('RUNNING');
     // Create a temporary canvas to draw the images
     const canvas = document.createElement('canvas');
     const context = canvas.getContext('2d');
@@ -148,7 +154,6 @@ export const CollageEditorProvider = ({ children }) => {
       // Draw images based on blockLayout
     } else if (mode === 'freeform') {
       // TODO FIX BELOW, just put redundant code in a separate function
-      console.error('RUNNING');
       // Calculate layout for 'freeform' mode
       if (recalculateLayout) {
         // Calculate layout for 'freeform' mode
@@ -198,7 +203,7 @@ export const CollageEditorProvider = ({ children }) => {
         mode,
         toggleMode,
         triggerRecalculateLayout,
-        randomizeFlag,
+        editMade,
       }}
     >
       {children}
