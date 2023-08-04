@@ -16,18 +16,10 @@ export const CollageEditorProvider = ({ children }) => {
   const [mode, setMode] = useState('block'); // 'block' or 'freeform'
   // State variable to hold the freeform layout
   const [collageLayoutState, setCollageLayoutState] = useState([]);
-  // State variable to track if the collage layout needs to be recalculated
-  // Kind of a hack but I need it or else the preview doesn't get updated correctly when randomizing
-  const [recalculateLayout, setRecalculateLayout] = useState(true);
 
   /* Flag to tell whether an edit was made and that the canvas should be re-rendered */
   // The value doesn't matter since we use it as a toggle
   const [editMade, setEditMade] = useState(false);
-
-  // Function to trigger the recalculation of the freeform layout
-  const triggerRecalculateLayout = () => {
-    setRecalculateLayout(true);
-  };
 
   /* Default / Block mode layout */
   const calculateBlockLayout = async (images, canvas, context) => {
@@ -54,7 +46,6 @@ export const CollageEditorProvider = ({ children }) => {
 
   /* RANDOMIZE THE ORDER OF THE PICTURES */
   const randomize = () => {
-    triggerRecalculateLayout();
     setEditMade(!editMade);
   };
 
@@ -153,38 +144,15 @@ export const CollageEditorProvider = ({ children }) => {
       await calculateBlockLayout(images, canvas, context);
       // Draw images based on blockLayout
     } else if (mode === 'freeform') {
-      // TODO FIX BELOW, just put redundant code in a separate function
       // Calculate layout for 'freeform' mode
-      if (recalculateLayout) {
-        // Calculate layout for 'freeform' mode
-        const freeformLayout = calculateFreeformLayout(
-          images,
-          collageWidth,
-          collageHeight
-        );
-        // Save the freeform layout in a state variable (collageLayoutState)
-        setCollageLayoutState(freeformLayout);
+      const freeformLayout = calculateFreeformLayout(
+        images,
+        collageWidth,
+        collageHeight
+      );
 
-        setRecalculateLayout(false); // Reset the recalculateLayout flag
-        await drawFreeformLayout(images, context, freeformLayout); // ! TODO WHATS TEH POINT OF using 'setCollageLayoutState' if i dont use the variable here?
-      } else {
-        // So this 'else' is ugly but I didn't find a way around this
-        // This functions gets called too many times so recalculateLayout ends up turning false too early
-        // Without this, we get stuck in an infinite loop of the images constantly updating and moving around
-        if (images.length !== collageLayoutState.length) {
-          // setCollageLayoutState also doesn't update fast enough which leads to this discrepancy
-          // so we have to recalculate the layout again :(
-          const freeformLayout = calculateFreeformLayout(
-            images,
-            collageWidth,
-            collageHeight
-          );
-          setCollageLayoutState(freeformLayout);
-          await drawFreeformLayout(images, context, freeformLayout);
-        } else {
-          await drawFreeformLayout(images, context, collageLayoutState);
-        }
-      }
+      setCollageLayoutState(freeformLayout);
+      await drawFreeformLayout(images, context, freeformLayout); // ! TODO WHATS TEH POINT OF using 'setCollageLayoutState' if i dont use the variable here?
     }
 
     // Convert the canvas to data URL
@@ -202,7 +170,6 @@ export const CollageEditorProvider = ({ children }) => {
         changeWidth,
         mode,
         toggleMode,
-        triggerRecalculateLayout,
         editMade,
       }}
     >
