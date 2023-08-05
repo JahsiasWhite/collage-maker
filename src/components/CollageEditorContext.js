@@ -106,17 +106,51 @@ export const CollageEditorProvider = ({ children }) => {
 
     // Define the maximum allowable overlap as a percentage of the image size
     // The higher the number, the farther apart from the middle the images can get
-    const maxOverlapPercentage = 100; // Adjust the percentage as needed
-    const maxOverlapWidth = (width * maxOverlapPercentage) / 100;
-    const maxOverlapHeight = (height * maxOverlapPercentage) / 100;
+    // const maxOverlapPercentage = 100; // Adjust the percentage as needed
+    // const maxOverlapWidth = (width * maxOverlapPercentage) / 100;
+    // const maxOverlapHeight = (height * maxOverlapPercentage) / 100;
 
-    // Loop and place all following points near the edge of the first point
+    // // Loop and place all following points near the edge of the first point
+    // for (let i = 0; i < images.length - 1; i++) {
+    //   const offsetX = Math.random() * maxOverlapWidth * 2 - maxOverlapWidth;
+    //   const offsetY = Math.random() * maxOverlapHeight * 2 - maxOverlapHeight;
+    //   const x = centerX + offsetX;
+    //   const y = centerY + offsetY;
+
+    //   collageLayout.push({ x, y, width, height });
+    // }
+
+    const radius = Math.min(canvasWidth, canvasHeight) / 3;
+
+    // Calculate the angle step to distribute the images evenly in the circle
+    const angleStep = (2 * Math.PI) / images.length;
+
     for (let i = 0; i < images.length - 1; i++) {
-      const offsetX = Math.random() * maxOverlapWidth * 2 - maxOverlapWidth;
-      const offsetY = Math.random() * maxOverlapHeight * 2 - maxOverlapHeight;
-      const x = centerX + offsetX;
-      const y = centerY + offsetY;
+      // Calculate the angle for the current image
+      // Add some random noise to the angle (adjust the range of noise as needed)
+      const angleNoise = 3; // Default is 3. The higher the value, the more each image 'stays in its lane'.
+      const angle =
+        i * angleStep +
+        Math.random() * (angleStep / angleNoise) -
+        angleStep / (angleNoise * 2);
 
+      // Add some random noise to the radius (adjust the range of noise as needed)
+      // The lower the number, the farther from the center the images will be
+      const distanceFromCenter = 5; // Default is 5
+      const randomRadius =
+        radius +
+        Math.random() * (radius / distanceFromCenter) -
+        radius / (distanceFromCenter * 2);
+
+      // Calculate the position of the image using polar coordinates
+      const x = centerX + randomRadius * Math.cos(angle);
+      const y = centerY + randomRadius * Math.sin(angle);
+
+      // Calculate the size of the image (you can adjust this as needed)
+      const width = canvasWidth / 4;
+      const height = width;
+
+      // Add the position and size to the collageLayout array
       collageLayout.push({ x, y, width, height });
     }
 
@@ -172,7 +206,7 @@ export const CollageEditorProvider = ({ children }) => {
       const image = new Image();
       // image.src = images[i];
       const imageIndex = shuffledIndices[i]; // Get the image index from shuffledIndices
-      image.src = images[i]; // Access the image using the shuffled index
+      image.src = images[imageIndex]; // Access the image using the shuffled index
 
       // Wait for the image to load before drawing
       await new Promise((resolve) => {
