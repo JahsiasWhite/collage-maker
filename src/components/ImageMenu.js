@@ -13,7 +13,7 @@ import ImageCarousel from './ImageCarousel';
   randomize - Function from 'CollageEditor'
   */
 
-const ImageMenu = ({ show, images }) => {
+const ImageMenu = ({ show, images, deleteImage }) => {
   const {} = useCollageEditor();
 
   return (
@@ -32,7 +32,7 @@ const ImageMenu = ({ show, images }) => {
         ))}
       </ul> */}
       <div>Images Uploaded:</div>
-      <ImageCarousel images={images} />
+      <ImageCarousel images={images} deleteImage={deleteImage} />
       {/* {images.length > 0 && <ImageCarousel images={images} />} */}
     </div>
   );

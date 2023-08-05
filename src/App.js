@@ -25,6 +25,14 @@ function App() {
     // setCollage(null); // Reset editedImage when new images are uploaded
   };
 
+  const handleDeleteImage = (idx) => {
+    // Create a new array without the image at the given index
+    const newImages = images.filter((_, index) => index !== idx);
+
+    // Update the state with the new array of images
+    setImages(newImages);
+  };
+
   // Function to toggle the visibility of LayoutMenu
   const toggleCollageLayout = () => {
     setIsCollageLayoutOpen((prev) => !prev);
@@ -49,7 +57,11 @@ function App() {
           {images.length > 0 && <CollagePreview />}
         </div>
         <LayoutMenu show={isCollageLayoutOpen} />
-        <ImageMenu show={isImageMenuOpen} images={images} />
+        <ImageMenu
+          show={isImageMenuOpen}
+          images={images}
+          deleteImage={handleDeleteImage}
+        />
       </div>
     </CollageEditorProvider>
   );
