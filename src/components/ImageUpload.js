@@ -29,7 +29,8 @@ const ImageUpload = ({ onImageUpload }) => {
     };
 
     loadImageUrls().then((newImages) => {
-      onImageUpload(newImages[0]); // Array is always size of 1
+      // New images is an array of strings the size of uploaded images
+      onImageUpload(newImages);
     });
   };
 

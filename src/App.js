@@ -17,9 +17,13 @@ function App() {
   const [isImageMenuOpen, setIsImageMenuOpen] = useState(false);
 
   // Individual Images
-  const handleImageUpload = (uploadedImage) => {
+  const handleImageUpload = (uploadedImages) => {
     let newImages = [...images];
-    newImages.push(uploadedImage);
+
+    // Loop through every image uploaded and add it to our list of images
+    for (let i = 0; i < uploadedImages.length; i++) {
+      newImages.push(uploadedImages[i]);
+    }
     setImages(newImages);
 
     // setCollage(null); // Reset editedImage when new images are uploaded
