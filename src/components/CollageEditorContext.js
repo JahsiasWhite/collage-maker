@@ -154,6 +154,8 @@ export const CollageEditorProvider = ({ children }) => {
 
     const radius = Math.min(canvasWidth, canvasHeight) / 3;
 
+    //TODO Make an option to have them be in order and spiral up and around the picture
+
     // Calculate the angle step to distribute the images evenly in the circle
     const angleStep = (2 * Math.PI) / images.length;
 

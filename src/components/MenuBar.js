@@ -8,13 +8,18 @@ import Icon1 from '../icons/Icon1';
 import ImageUpload from '../components/ImageUpload';
 import CollageExporter from '../components/CollageExporter';
 import CollageLayout from '../components/CollageLayout';
+import CollageImages from '../components/CollageImages';
 
-const MenuBar = ({ handleImageUpload, toggleCollageLayout }) => {
+const MenuBar = ({
+  handleImageUpload,
+  toggleCollageLayout,
+  toggleImageMenu,
+}) => {
   // const [isCollageLayoutOpen, setIsCollageLayoutOpen] = useState(false);
 
   const menuItems = [
     // { id: 2, icon: <Icon1 />, label: 'Customize' }, IDK IF I WANT THIS AT ALL?
-    { id: 4, icon: <Icon1 />, label: 'Text' },
+    // { id: 4, icon: <Icon1 />, label: 'Text' },
     // { id: 5, icon: <Icon1 />, label: 'Download/Export' },
     // { id: 6, icon: <ImageUpload onImageUpload={handleImageUpload} /> },
   ];
@@ -28,14 +33,9 @@ const MenuBar = ({ handleImageUpload, toggleCollageLayout }) => {
         </button>
       ))}
       <ImageUpload onImageUpload={handleImageUpload} />
-      <CollageExporter />
-
-      {/* <button className={styles.menuButton} onClick={toggleCollageLayout}>
-        <div className={styles.menuIcon}>
-        </div>
-        <div className={styles.menuLabel}>Customize</div>
-      </button> */}
       <CollageLayout onToggle={toggleCollageLayout} />
+      <CollageImages onToggle={toggleImageMenu} />
+      <CollageExporter />
     </div>
   );
 };
