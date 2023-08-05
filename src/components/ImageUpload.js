@@ -3,8 +3,6 @@ import styles from '../styles/MenuButton.module.css';
 import Icon1 from '../icons/Icon1';
 
 const ImageUpload = ({ onImageUpload }) => {
-  const [selectedImages, setSelectedImages] = useState([]);
-
   const handleImageChange = (event) => {
     const files = event.target.files;
     const selectedImagesArray = [];
@@ -31,11 +29,7 @@ const ImageUpload = ({ onImageUpload }) => {
     };
 
     loadImageUrls().then((newImages) => {
-      setSelectedImages((prevSelectedImages) => [
-        ...prevSelectedImages,
-        ...newImages,
-      ]);
-      onImageUpload([...selectedImages, ...newImages]);
+      onImageUpload(newImages[0]); // Array is always size of 1
     });
   };
 
