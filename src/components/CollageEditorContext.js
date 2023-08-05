@@ -89,6 +89,69 @@ export const CollageEditorProvider = ({ children }) => {
     return collageLayout;
   };
 
+  // Supposed to generate a nice looking collage
+  const generateJahPoints = (images, canvasWidth, canvasHeight) => {
+    const collageLayout = [];
+
+    // Calculate the size of the image, currently all are the same
+    const width = canvasWidth / 4;
+    const height = canvasHeight / 4;
+
+    // Place the first point in the middle of the collage
+    // const centerX = canvasWidth / 2;
+    // const centerY = canvasHeight / 2;
+    const centerX = canvasWidth / 2 - width / 2; // Center point adjusted for the dimensions of the image
+    const centerY = canvasHeight / 2 - height / 2;
+    collageLayout.push({ x: centerX, y: centerY, width, height });
+
+    // Define the maximum allowable overlap as a percentage of the image size
+    // The higher the number, the farther apart from the middle the images can get
+    const maxOverlapPercentage = 100; // Adjust the percentage as needed
+    const maxOverlapWidth = (width * maxOverlapPercentage) / 100;
+    const maxOverlapHeight = (height * maxOverlapPercentage) / 100;
+
+    // Loop and place all following points near the edge of the first point
+    for (let i = 0; i < images.length - 1; i++) {
+      const offsetX = Math.random() * maxOverlapWidth * 2 - maxOverlapWidth;
+      const offsetY = Math.random() * maxOverlapHeight * 2 - maxOverlapHeight;
+      const x = centerX + offsetX;
+      const y = centerY + offsetY;
+
+      collageLayout.push({ x, y, width, height });
+    }
+
+    return collageLayout;
+
+    // const centerX = canvasWidth / 2;
+    // const centerY = canvasHeight / 2;
+    // // Calculate the radius of the circular arrangement
+    // const radius = Math.min(canvasWidth, canvasHeight) / 3;
+
+    // // Calculate the angle step to distribute the images evenly in the circle
+    // const angleStep = (2 * Math.PI) / images.length;
+    // console.error('ANGLE STEP: ' + angleStep);
+
+    // const collageLayout = [];
+
+    // for (let i = 0; i < images.length; i++) {
+    //   // Calculate the angle for the current image
+    //   const angle = i * angleStep;
+
+    //   // Calculate the position of the image using polar coordinates
+    //   const x = centerX + radius * Math.cos(angle);
+    //   const y = centerY + radius * Math.sin(angle);
+
+    //   // Calculate the size of the image (you can adjust this as needed)
+    //   const width = 200;
+    //   const height = 200;
+
+    //   // Add the position and size to the collageLayout array
+    //   collageLayout.push({ x, y, width, height });
+    // }
+
+    // return collageLayout;
+  };
+
   // Uses the calculated freeformLayout to place the images on the canvas
   const drawFreeformLayout = async (images, context, freeformLayout) => {
     // Shuffle the array randomly using Fisher-Yates Shuffle algorithm
@@ -109,7 +172,7 @@ export const CollageEditorProvider = ({ children }) => {
       const image = new Image();
       // image.src = images[i];
       const imageIndex = shuffledIndices[i]; // Get the image index from shuffledIndices
-      image.src = images[imageIndex]; // Access the image using the shuffled index
+      image.src = images[i]; // Access the image using the shuffled index
 
       // Wait for the image to load before drawing
       await new Promise((resolve) => {
@@ -145,7 +208,13 @@ export const CollageEditorProvider = ({ children }) => {
       // Draw images based on blockLayout
     } else if (mode === 'freeform') {
       // Calculate layout for 'freeform' mode
-      const freeformLayout = calculateFreeformLayout(
+      // const freeformLayout = calculateFreeformLayout(
+      //   images,
+      //   collageWidth,
+      //   collageHeight
+      // );
+      // Calculate layout for 'freeform' mode using Poisson Disk Sampling
+      const freeformLayout = generateJahPoints(
         images,
         collageWidth,
         collageHeight

@@ -31,7 +31,7 @@ const LayoutMenu = ({ show, options }) => {
     if (isNaN(newWidth)) return;
     if (newWidth === '') return;
 
-    changeHeight(Number(newWidth));
+    changeWidth(Number(newWidth));
   };
 
   const handleReset = () => {

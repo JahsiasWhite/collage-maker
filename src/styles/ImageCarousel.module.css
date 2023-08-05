@@ -12,4 +12,7 @@
 
 .imageCarousel img {
   margin-left: 10px;
+
+  max-width: 200px;
+  max-height: 200px;
 }
