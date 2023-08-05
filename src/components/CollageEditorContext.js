@@ -12,6 +12,9 @@ export const CollageEditorProvider = ({ children }) => {
   const [collageWidth, setCollageWidth] = useState(800); // Default width 800
   const [collageHeight, setCollageHeight] = useState(600); // Default height 600
 
+  /* Order of images, useful when rerendering so we can replicate the original */
+  const [curImgOrder, setCurImgOrder] = useState([]);
+
   /* Layout Mode */
   const [mode, setMode] = useState('block'); // 'block' or 'freeform'
   // State variable to hold the freeform layout
@@ -20,6 +23,13 @@ export const CollageEditorProvider = ({ children }) => {
   /* Flag to tell whether an edit was made and that the canvas should be re-rendered */
   // The value doesn't matter since we use it as a toggle
   const [editMade, setEditMade] = useState(false);
+
+  /* Says whether to stop image swapping, used for when changing customization options and we want the changes to be more noticable */
+  const [imageSwappingDisabled, setImageSwappingDisabled] = useState(false);
+
+  /* Customization options for freeform mode */
+  const [distFromCenter, setDistFromCenter] = useState(5);
+  const [angleNoise, setAngleNoise] = useState(3);
 
   /* Default / Block mode layout */
   const calculateBlockLayout = async (images, canvas, context) => {
@@ -65,6 +75,22 @@ export const CollageEditorProvider = ({ children }) => {
     setMode(mode);
     setEditMade(!editMade);
     // Call calculateCollageLayout here?
+  };
+
+  const toggleImageSwapping = () => {
+    setImageSwappingDisabled(!imageSwappingDisabled);
+  };
+
+  const changeDistFromCenter = (dist) => {
+    setDistFromCenter(dist);
+    setEditMade(!editMade);
+    // TODO Disable iamge swapping so there is less noticeable difference
+  };
+
+  const changeAngleNoise = (angle) => {
+    setAngleNoise(angle);
+    setEditMade(!editMade);
+    toggleImageSwapping();
   };
 
   // Function to arrange the images in a collage-like layout
@@ -128,7 +154,7 @@ export const CollageEditorProvider = ({ children }) => {
     for (let i = 0; i < images.length - 1; i++) {
       // Calculate the angle for the current image
       // Add some random noise to the angle (adjust the range of noise as needed)
-      const angleNoise = 3; // Default is 3. The higher the value, the more each image 'stays in its lane'.
+      // const angleNoise = 3; // Default is 3. The higher the value, the more each image 'stays in its lane'.
       const angle =
         i * angleStep +
         Math.random() * (angleStep / angleNoise) -
@@ -136,11 +162,12 @@ export const CollageEditorProvider = ({ children }) => {
 
       // Add some random noise to the radius (adjust the range of noise as needed)
       // The lower the number, the farther from the center the images will be
-      const distanceFromCenter = 5; // Default is 5
+      // const distanceFromCenter = 5; // Default is 5
       const randomRadius =
         radius +
-        Math.random() * (radius / distanceFromCenter) -
-        radius / (distanceFromCenter * 2);
+        Math.random() * (radius / distFromCenter) -
+        radius / (distFromCenter * 2);
+      console.error(distFromCenter);
 
       // Calculate the position of the image using polar coordinates
       const x = centerX + randomRadius * Math.cos(angle);
@@ -197,9 +224,16 @@ export const CollageEditorProvider = ({ children }) => {
     // console.error('RUNING');
 
     // Create an array of indices representing the order of images in shuffled order
-    const shuffledIndices = [...Array(images.length).keys()].sort(
-      () => Math.random() - 0.5
-    );
+    let shuffledIndices;
+    if (imageSwappingDisabled) {
+      // dont shuffle else do shuffle
+      shuffledIndices = curImgOrder;
+    } else {
+      shuffledIndices = [...Array(images.length).keys()].sort(
+        () => Math.random() - 0.5
+      );
+      setCurImgOrder(shuffledIndices);
+    }
 
     // Draw images based on collageLayout
     for (let i = 0; i < images.length; i++) {
@@ -236,6 +270,9 @@ export const CollageEditorProvider = ({ children }) => {
     // Clear the canvas
     context.clearRect(0, 0, canvas.width, canvas.height);
 
+    // console.error(toggleimageSwappingDisabled)
+    console.error(imageSwappingDisabled);
+
     if (mode === 'block') {
       // Calculate layout for 'block' mode
       await calculateBlockLayout(images, canvas, context);
@@ -258,6 +295,12 @@ export const CollageEditorProvider = ({ children }) => {
       await drawFreeformLayout(images, context, freeformLayout); // ! TODO WHATS TEH POINT OF using 'setCollageLayoutState' if i dont use the variable here?
     }
 
+    // Image swapping true stops the order of the images changing
+    // Useful for seeing changes
+    if (imageSwappingDisabled) {
+      toggleImageSwapping();
+    }
+
     // Convert the canvas to data URL
     const editedDataURL = canvas.toDataURL('image/png', 1.0);
     setCollage(editedDataURL);
@@ -274,6 +317,8 @@ export const CollageEditorProvider = ({ children }) => {
         mode,
         toggleMode,
         editMade,
+        changeDistFromCenter,
+        changeAngleNoise,
       }}
     >
       {children}

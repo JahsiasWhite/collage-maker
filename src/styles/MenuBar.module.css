@@ -9,6 +9,7 @@
   height: 100%;
   border-right: var(--border-size) solid var(--secondary-color);
   background-color: var(--background-color);
+  color: var(--secondary-color);
 
   display: flex;
   flex-direction: column;

@@ -12,8 +12,19 @@ import { useCollageEditor } from './CollageEditorContext';
   */
 
 const LayoutMenu = ({ show, options }) => {
-  const { randomize, changeHeight, changeWidth, mode, toggleMode } =
-    useCollageEditor();
+  const {
+    randomize,
+    changeHeight,
+    changeWidth,
+    mode,
+    toggleMode,
+    changeDistFromCenter,
+    changeAngleNoise,
+  } = useCollageEditor();
+
+  // Keeps track of the 'distance from center' for freeform mode
+  const [distFromCenter, setDistFromCenter] = useState(5); // Default value
+  const [angleNoise, setAngleNoise] = useState(3); // Default value
 
   /* Handles collage dimensions */
   const handleHeightChange = (e) => {
@@ -45,56 +56,124 @@ const LayoutMenu = ({ show, options }) => {
     toggleMode(mode === 'block' ? 'freeform' : 'block');
   };
 
+  /* Freeform mode customizations */
+  const handleSliderChange = (e) => {
+    setDistFromCenter(Number(e.target.value));
+    changeDistFromCenter(Number(e.target.value));
+    console.error('WORKING');
+  };
+  const hangleAngleNoiseChange = (e) => {
+    setAngleNoise(Number(e.target.value));
+    changeAngleNoise(Number(e.target.value));
+  };
+
   const customOptions = [
     // Define your customization options here
-    // For example: { id: 1, label: 'Option 1', onClick: () => handleOptionClick(1) }
-    { id: 1, label: 'Randomize', onClick: () => randomize() },
-    {
-      id: 2,
-      label: 'Change Height',
-      input: (
-        <div>
-          <input
-            type="number"
-            onChange={handleHeightChange}
-            placeholder="Enter new height"
-          />
-        </div>
-      ),
-    },
-    {
-      id: 3,
-      label: 'Change Width',
-      input: (
-        <div>
-          <input
-            type="number"
-            onChange={handleWidthChange}
-            placeholder="Enter new width"
-          />
-        </div>
-      ),
-    },
-    {
-      id: 4,
-      label: 'Reset',
-      onClick: handleReset,
-    },
+    // {
+    //   id: 2,
+    //   label: 'Change Height',
+    //   input: (
+    //     <div>
+    //       <input
+    //         className={styles.layoutInput}
+    //         type="number"
+    //         onChange={handleHeightChange}
+    //         placeholder="Enter new height"
+    //       />
+    //     </div>
+    //   ),
+    // },
+    // {
+    //   id: 3,
+    //   label: 'Change Width',
+    //   input: (
+    //     <div>
+    //       <input
+    //         className={styles.layoutInput}
+    //         type="number"
+    //         onChange={handleWidthChange}
+    //         placeholder="Enter new width"
+    //       />
+    //     </div>
+    //   ),
+    // },
+    // {
+    //   id: 4,
+    //   label: 'Reset',
+    //   onClick: handleReset,
+    // },
     {
       id: 5,
       label: 'Toggle Slider',
       input: (
-        <div>
-          <label>
-            <input
-              type="checkbox"
-              checked={mode === 'freeform'}
-              onChange={handleToggleMode}
-            />
-            Freeform Mode
-          </label>
+        <div className={styles.switchContainer}>
+          <input
+            className={styles.toggleSwitch}
+            type="checkbox"
+            checked={mode === 'freeform'}
+            onChange={handleToggleMode}
+          />
+          <label className={styles.toggleLabel}>Freeform Mode</label>
         </div>
       ),
+    },
+
+    {
+      id: 6,
+      label: 'Randomize',
+      className: mode === 'freeform' ? '' : styles.greyedOut,
+      onClick: () => randomize(),
+      input: (
+        <div>
+          <button
+            className={`${styles.layoutButton} ${
+              mode === 'freeform' ? '' : styles.greyedOut
+            }`}
+            onClick={randomize}
+          >
+            Randomize
+          </button>
+        </div>
+      ),
+    },
+    // {
+    //   id: 7,
+    //   label: 'Distance from Center',
+    //   input: (
+    //     <div>
+    //       <input
+    //         className={styles.slider}
+    //         type="range"
+    //         min={0}
+    //         max={5}
+    //         // step={0.1}
+    //         onChange={handleSliderChange}
+    //         disabled={mode !== 'freeform'}
+    //       />
+    //       {/* <span>{distanceFromCenter}</span> */}
+    //     </div>
+    //   ),
+    //   disabled: mode !== 'freeform',
+    // },
+    {
+      id: 8,
+      label: 'Angle Noise',
+      input: (
+        <div>
+          <div classname="inputLabel">Noise:</div>
+          <input
+            className={styles.slider}
+            type="range"
+            min={0}
+            max={3}
+            step={0.1}
+            onChange={hangleAngleNoiseChange}
+            disabled={mode !== 'freeform'}
+          />
+          <span>{angleNoise}</span>
+        </div>
+      ),
+      disabled: mode !== 'freeform',
     },
   ];
 
@@ -106,7 +185,9 @@ const LayoutMenu = ({ show, options }) => {
             {option.input ? (
               option.input
             ) : (
-              <button onClick={option.onClick}>{option.label}</button>
+              <button className={styles.layoutButton} onClick={option.onClick}>
+                {option.label}
+              </button>
             )}
           </li>
         ))}

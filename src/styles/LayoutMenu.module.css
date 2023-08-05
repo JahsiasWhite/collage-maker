@@ -1,6 +1,6 @@
 .layoutMenu {
   z-index: 1;
-  background-color: red;
+  background-color: grey;
   position: fixed;
   top: calc(var(--header-height) + var(--border-size));
   left: 0;
@@ -8,10 +8,130 @@
   width: 300px; /* Set the width of the menu */
   transform: translateX(-100%); /* Initially hide the menu to the left */
   transition: transform 1s ease; /* Add a smooth transition */
+
+  /* TODO I dont know if I want this */
+  /* opacity: 90%; */
 }
 
 .open {
-  background-color: blue;
+  /* background-color: blue; */
   /* transform: translateX(200%); */
   transform: translateX(calc(var(--menu-width) + var(--border-size)));
+}
+
+.customOptionsList {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.customOptionsList li {
+  margin-bottom: 5px;
+  margin-top: 20px;
+}
+
+.inputLabel {
+  margin-right: 80px;
+}
+
+.layoutButton {
+  /* display: inline-block; */
+  padding: 10px 20px;
+  background-color: black;
+  color: var(--background-color);
+  font-size: 16px;
+  /* font-weight: bold; */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.layoutButton:hover {
+  background-color: #4e4e4e;
+}
+
+.greyedOut {
+  opacity: 0.1;
+  cursor: not-allowed;
+}
+
+.layoutInput {
+  border: 2px solid var(--secondary-color); /* Use --secondary-color variable for border color */
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.layoutInput[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.layoutInput input {
+}
+
+.layoutInput input::placeholder {
+  color: #999;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* CSS for the fancy toggle switch */
+.switchContainer {
+  display: flex;
+  align-items: center;
+}
+
+.toggleSwitch {
+  position: relative;
+  width: 60px;
+  height: 30px;
+  appearance: none;
+  background-color: var(
+    --secondary-color
+  ); /* Use your theme's secondary color here */
+  border-radius: 15px;
+  /* outline: none; */
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.toggleSwitch:checked {
+  background-color: green;
+}
+
+/* This is the circle in the slider that moves */
+.toggleSwitch:before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 26px;
+  height: 26px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+
+.toggleSwitch:checked:before {
+  transform: translateX(30px);
+}
+
+/* Optional: Add some styling to the label */
+.toggleLabel {
+  margin-left: 10px;
+  font-weight: bold;
+  user-select: none;
 }
