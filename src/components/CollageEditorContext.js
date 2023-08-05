@@ -71,6 +71,12 @@ export const CollageEditorProvider = ({ children }) => {
     setEditMade(!editMade);
   };
 
+  const reset = () => {
+    changeHeight(800); // TODO make these not hardcoded
+    changeWidth(800);
+    toggleImageSwapping();
+  };
+
   const toggleMode = (mode) => {
     setMode(mode);
     setEditMade(!editMade);
@@ -167,14 +173,13 @@ export const CollageEditorProvider = ({ children }) => {
         radius +
         Math.random() * (radius / distFromCenter) -
         radius / (distFromCenter * 2);
-      console.error(distFromCenter);
 
       // Calculate the position of the image using polar coordinates
       const x = centerX + randomRadius * Math.cos(angle);
       const y = centerY + randomRadius * Math.sin(angle);
 
       // Calculate the size of the image (you can adjust this as needed)
-      const width = canvasWidth / 4;
+      const width = canvasWidth / 3; // maybe 4?
       const height = width;
 
       // Add the position and size to the collageLayout array
@@ -266,12 +271,8 @@ export const CollageEditorProvider = ({ children }) => {
     // ! BOTH THE PREVIEW Dimensions and the output dimensions
     canvas.width = collageWidth;
     canvas.height = collageHeight;
-
     // Clear the canvas
     context.clearRect(0, 0, canvas.width, canvas.height);
-
-    // console.error(toggleimageSwappingDisabled)
-    console.error(imageSwappingDisabled);
 
     if (mode === 'block') {
       // Calculate layout for 'block' mode
@@ -319,6 +320,9 @@ export const CollageEditorProvider = ({ children }) => {
         editMade,
         changeDistFromCenter,
         changeAngleNoise,
+        collageWidth,
+        collageHeight,
+        reset,
       }}
     >
       {children}

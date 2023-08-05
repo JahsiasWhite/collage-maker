@@ -20,6 +20,7 @@ const LayoutMenu = ({ show, options }) => {
     toggleMode,
     changeDistFromCenter,
     changeAngleNoise,
+    reset,
   } = useCollageEditor();
 
   // Keeps track of the 'distance from center' for freeform mode
@@ -46,8 +47,7 @@ const LayoutMenu = ({ show, options }) => {
   };
 
   const handleReset = () => {
-    changeHeight(800); // TODO Make these not hard-coded
-    changeWidth(800);
+    reset();
   };
 
   /* Layout Mode */
@@ -60,7 +60,6 @@ const LayoutMenu = ({ show, options }) => {
   const handleSliderChange = (e) => {
     setDistFromCenter(Number(e.target.value));
     changeDistFromCenter(Number(e.target.value));
-    console.error('WORKING');
   };
   const hangleAngleNoiseChange = (e) => {
     setAngleNoise(Number(e.target.value));
@@ -69,39 +68,39 @@ const LayoutMenu = ({ show, options }) => {
 
   const customOptions = [
     // Define your customization options here
-    // {
-    //   id: 2,
-    //   label: 'Change Height',
-    //   input: (
-    //     <div>
-    //       <input
-    //         className={styles.layoutInput}
-    //         type="number"
-    //         onChange={handleHeightChange}
-    //         placeholder="Enter new height"
-    //       />
-    //     </div>
-    //   ),
-    // },
-    // {
-    //   id: 3,
-    //   label: 'Change Width',
-    //   input: (
-    //     <div>
-    //       <input
-    //         className={styles.layoutInput}
-    //         type="number"
-    //         onChange={handleWidthChange}
-    //         placeholder="Enter new width"
-    //       />
-    //     </div>
-    //   ),
-    // },
-    // {
-    //   id: 4,
-    //   label: 'Reset',
-    //   onClick: handleReset,
-    // },
+    {
+      id: 2,
+      label: 'Change Height',
+      input: (
+        <div>
+          <input
+            className={styles.layoutInput}
+            type="number"
+            onChange={handleHeightChange}
+            placeholder="Enter new height"
+          />
+        </div>
+      ),
+    },
+    {
+      id: 3,
+      label: 'Change Width',
+      input: (
+        <div>
+          <input
+            className={styles.layoutInput}
+            type="number"
+            onChange={handleWidthChange}
+            placeholder="Enter new width"
+          />
+        </div>
+      ),
+    },
+    {
+      id: 4,
+      label: 'Reset',
+      onClick: handleReset,
+    },
     {
       id: 5,
       label: 'Toggle Slider',
@@ -141,6 +140,7 @@ const LayoutMenu = ({ show, options }) => {
     //   label: 'Distance from Center',
     //   input: (
     //     <div>
+    //       <div className="inputLabel">Distance from center:</div>
     //       <input
     //         className={styles.slider}
     //         type="range"
@@ -150,7 +150,7 @@ const LayoutMenu = ({ show, options }) => {
     //         onChange={handleSliderChange}
     //         disabled={mode !== 'freeform'}
     //       />
-    //       {/* <span>{distanceFromCenter}</span> */}
+    //       <span>{distFromCenter}</span>
     //     </div>
     //   ),
     //   disabled: mode !== 'freeform',
@@ -160,7 +160,7 @@ const LayoutMenu = ({ show, options }) => {
       label: 'Angle Noise',
       input: (
         <div>
-          <div classname="inputLabel">Noise:</div>
+          <div className="inputLabel">Noise:</div>
           <input
             className={styles.slider}
             type="range"
