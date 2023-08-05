@@ -28,8 +28,8 @@ body {
 }
 
 img {
-  /* max-width: 200px;
-  max-height: 200px; */
+  /* width: 80px;
+  height: 80px; */
 }
 
 .middleContent {
@@ -46,4 +46,12 @@ img {
   /* top: 5.1vh; */
   top: calc(var(--header-height) + var(--border-size));
   left: calc(var(--menu-width) + var(--border-size));
+}
+
+.mainUploader {
+  top: 30%;
+  position: absolute;
+  margin: 0;
+  height: 100px;
+  width: 100px;
 }

@@ -6,6 +6,7 @@ import CollagePreview from './components/CollagePreview';
 import CollageEditor from './components/CollageEditor';
 import LayoutMenu from './components/LayoutMenu';
 import ImageMenu from './components/ImageMenu';
+import ImageUpload from './components/ImageUpload';
 
 // CONTEXT
 import { CollageEditorProvider } from './components/CollageEditorContext'; // So we can talk to the editor directly, NO PROP DRILLING YAY!!
@@ -58,6 +59,11 @@ function App() {
         />{' '}
         <CollageEditor images={images}></CollageEditor>
         <div className="middleContent">
+          {images.length === 0 && (
+            <div className="mainUploader">
+              <ImageUpload onImageUpload={handleImageUpload} />
+            </div>
+          )}
           {images.length > 0 && <CollagePreview />}
         </div>
         <LayoutMenu show={isCollageLayoutOpen} />

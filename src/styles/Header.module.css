@@ -8,6 +8,15 @@
   background-color: var(--background-color);
   color: var(--secondary-color);
   z-index: 2;
+
+  display: flex; /* Use flexbox layout */
+  align-items: center; /* Align items vertically in the center */
+}
+
+.logo {
+  margin-right: 10px; /* Add some spacing between the logo and the title */
+  width: 80px;
+  height: 80px;
 }
 
 .title {

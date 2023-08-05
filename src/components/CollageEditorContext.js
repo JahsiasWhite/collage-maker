@@ -72,8 +72,8 @@ export const CollageEditorProvider = ({ children }) => {
   };
 
   const reset = () => {
-    changeHeight(800); // TODO make these not hardcoded
-    changeWidth(800);
+    changeWidth(800); // TODO make these not hardcoded
+    changeHeight(600);
     toggleImageSwapping();
   };
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useCollageEditor } from './CollageEditorContext';
+import styles from '../styles/CollagePreview.module.css';
 
 const CollagePreview = () => {
   const { collage, collageWidth, collageHeight } = useCollageEditor();
@@ -9,6 +10,7 @@ const CollagePreview = () => {
     <div>
       <h2>Preview:</h2>
       <img
+        className={styles.imgPreview}
         src={collage}
         alt="Collage Preview"
         style={{ border: '1px solid #ccc', margin: '10px 0' }}
