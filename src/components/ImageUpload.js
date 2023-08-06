@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from '../styles/MenuButton.module.css';
+import styles from '../styles/MenuBar.module.css';
 import Icon1 from '../icons/Icon1';
 
 const ImageUpload = ({ onImageUpload }) => {

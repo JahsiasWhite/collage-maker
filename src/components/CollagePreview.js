@@ -15,7 +15,7 @@ const CollagePreview = () => {
         alt="Collage Preview"
         style={{ border: '1px solid #ccc', margin: '10px 0' }}
       />
-      <div>
+      <div className={styles.dimensions}>
         {collageWidth} x {collageHeight}
       </div>
     </div>

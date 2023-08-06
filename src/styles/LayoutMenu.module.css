@@ -38,9 +38,10 @@
 
 .layoutButton {
   /* display: inline-block; */
+  color: var(--secondary-color);
   padding: 10px 20px;
   background-color: black;
-  color: var(--background-color);
+  /* color: var(--background-color); */
   font-size: 16px;
   /* font-weight: bold; */
   border: none;
@@ -99,9 +100,7 @@
   width: 60px;
   height: 30px;
   appearance: none;
-  background-color: var(
-    --secondary-color
-  ); /* Use your theme's secondary color here */
+  background-color: var(--secondary-color);
   border-radius: 15px;
   /* outline: none; */
   cursor: pointer;
@@ -120,13 +119,14 @@
   left: 2px;
   width: 26px;
   height: 26px;
-  background-color: white;
+  background-color: var(--background-color);
   border-radius: 50%;
-  transition: transform 0.2s;
+  transition: transform 0.2s, background-color 0.5s;
 }
 
 .toggleSwitch:checked:before {
   transform: translateX(30px);
+  background-color: var(--secondary-color);
 }
 
 /* Optional: Add some styling to the label */
