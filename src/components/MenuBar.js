@@ -2,7 +2,6 @@
 
 import React from 'react';
 import styles from '../styles/MenuBar.module.css';
-import Icon1 from '../icons/Icon1';
 
 // BUTTONS TODO RENAME
 import ImageUpload from '../components/ImageUpload';

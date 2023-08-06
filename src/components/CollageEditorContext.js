@@ -21,7 +21,7 @@ export const CollageEditorProvider = ({ children }) => {
   /* Layout Mode */
   const [mode, setMode] = useState('block'); // 'block' or 'freeform'
   // State variable to hold the freeform layout
-  const [collageLayoutState, setCollageLayoutState] = useState([]);
+  // const [collageLayoutState, setCollageLayoutState] = useState([]);
 
   /* Flag to tell whether an edit was made and that the canvas should be re-rendered */
   // The value doesn't matter since we use it as a toggle
@@ -299,7 +299,7 @@ export const CollageEditorProvider = ({ children }) => {
         collageHeight
       );
 
-      setCollageLayoutState(freeformLayout);
+      // setCollageLayoutState(freeformLayout);
       await drawFreeformLayout(images, context, freeformLayout); // ! TODO WHATS TEH POINT OF using 'setCollageLayoutState' if i dont use the variable here?
     }
 

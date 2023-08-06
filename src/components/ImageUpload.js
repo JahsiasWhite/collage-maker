@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from '../styles/MenuBar.module.css';
 import Icon1 from '../icons/Icon1';
 
