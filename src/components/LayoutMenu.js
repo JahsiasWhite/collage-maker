@@ -68,73 +68,6 @@ const LayoutMenu = ({ show, options }) => {
 
   const customOptions = [
     // Define your customization options here
-    {
-      id: 2,
-      label: 'Change Height',
-      input: (
-        <div>
-          <input
-            className={styles.layoutInput}
-            type="number"
-            onChange={handleHeightChange}
-            placeholder="Enter new height"
-          />
-        </div>
-      ),
-    },
-    {
-      id: 3,
-      label: 'Change Width',
-      input: (
-        <div>
-          <input
-            className={styles.layoutInput}
-            type="number"
-            onChange={handleWidthChange}
-            placeholder="Enter new width"
-          />
-        </div>
-      ),
-    },
-    {
-      id: 4,
-      label: 'Reset',
-      onClick: handleReset,
-    },
-    {
-      id: 5,
-      label: 'Toggle Slider',
-      input: (
-        <div className={styles.switchContainer}>
-          <input
-            className={styles.toggleSwitch}
-            type="checkbox"
-            checked={mode === 'freeform'}
-            onChange={handleToggleMode}
-          />
-          <label className={styles.toggleLabel}>Freeform Mode</label>
-        </div>
-      ),
-    },
-
-    {
-      id: 6,
-      label: 'Randomize',
-      className: mode === 'freeform' ? '' : styles.greyedOut,
-      onClick: () => randomize(),
-      input: (
-        <div>
-          <button
-            className={`${styles.layoutButton} ${
-              mode === 'freeform' ? '' : styles.greyedOut
-            }`}
-            onClick={randomize}
-          >
-            Randomize
-          </button>
-        </div>
-      ),
-    },
     // {
     //   id: 7,
     //   label: 'Distance from Center',
@@ -155,11 +88,68 @@ const LayoutMenu = ({ show, options }) => {
     //   ),
     //   disabled: mode !== 'freeform',
     // },
-    {
-      id: 8,
-      label: 'Angle Noise',
-      input: (
-        <div>
+  ];
+
+  return (
+    <div className={`${styles.layoutMenu} ${show ? styles.open : ''}`}>
+      {/* <ul className={styles.customOptionsList}>
+        {customOptions.map((option) => (
+          <li key={option.id} className={styles.customOption}>
+            {option.input ? (
+              option.input
+            ) : (
+              <button className={styles.layoutButton} onClick={option.onClick}>
+                {option.label}
+              </button>
+            )}
+          </li>
+        ))}
+      </ul> */}
+      <div className={styles.customOptionsList}>
+        <div className={styles.dimensionSettings}>
+          <div>Resolution</div>
+          <div className={styles.customOption}>
+            <input
+              className={styles.layoutInput}
+              type="number"
+              onChange={handleHeightChange}
+              placeholder="Enter new height"
+            />
+          </div>
+          <div className={styles.customOption}>
+            <input
+              className={styles.layoutInput}
+              type="number"
+              onChange={handleWidthChange}
+              placeholder="Enter new width"
+            />
+          </div>
+          <div className={styles.customOption}>
+            <button className={styles.layoutButton} onClick={handleReset}>
+              Reset
+            </button>
+          </div>
+        </div>
+        <div className={`${styles.switchContainer} ${styles.customOption}`}>
+          <input
+            className={styles.toggleSwitch}
+            type="checkbox"
+            checked={mode === 'freeform'}
+            onChange={handleToggleMode}
+          />
+          <label className={styles.toggleLabel}>Freeform Mode</label>
+        </div>
+        <div className={styles.customOption}>
+          <button
+            className={`${styles.layoutButton} ${
+              mode === 'freeform' ? '' : styles.greyedOut
+            }`}
+            onClick={randomize}
+          >
+            Randomize
+          </button>
+        </div>
+        <div className={styles.customOption}>
           <div className="inputLabel">Noise:</div>
           <input
             className={styles.slider}
@@ -172,26 +162,7 @@ const LayoutMenu = ({ show, options }) => {
           />
           <span>{angleNoise}</span>
         </div>
-      ),
-      disabled: mode !== 'freeform',
-    },
-  ];
-
-  return (
-    <div className={`${styles.layoutMenu} ${show ? styles.open : ''}`}>
-      <ul className={styles.customOptionsList}>
-        {customOptions.map((option) => (
-          <li key={option.id} className={styles.customOption}>
-            {option.input ? (
-              option.input
-            ) : (
-              <button className={styles.layoutButton} onClick={option.onClick}>
-                {option.label}
-              </button>
-            )}
-          </li>
-        ))}
-      </ul>
+      </div>
     </div>
   );
 };

@@ -5,12 +5,15 @@ const CollageEditorContext = createContext();
 
 export const useCollageEditor = () => useContext(CollageEditorContext);
 
+const DEFAULT_WIDTH = 1600;
+const DEFAULT_HEIGHT = 1200;
+
 export const CollageEditorProvider = ({ children }) => {
   const [collage, setCollage] = useState(null);
 
   /* Collage Dimensions */
-  const [collageWidth, setCollageWidth] = useState(800); // Default width 800
-  const [collageHeight, setCollageHeight] = useState(600); // Default height 600
+  const [collageWidth, setCollageWidth] = useState(DEFAULT_WIDTH);
+  const [collageHeight, setCollageHeight] = useState(DEFAULT_HEIGHT);
 
   /* Order of images, useful when rerendering so we can replicate the original */
   const [curImgOrder, setCurImgOrder] = useState([]);
@@ -33,10 +36,12 @@ export const CollageEditorProvider = ({ children }) => {
 
   /* Default / Block mode layout */
   const calculateBlockLayout = async (images, canvas, context) => {
+    //TODO Fix this for example: 2 pictures uploaded, lots of whitespace below... should I crop the canvas?
     // Calculate the dimensions of each image in the collage
     const numPicturesWide = Math.ceil(Math.sqrt(images.length));
+    const numPicturesHigh = Math.ceil(images.length / numPicturesWide);
     const imageWidth = canvas.width / numPicturesWide;
-    const imageHeight = canvas.height / numPicturesWide;
+    const imageHeight = canvas.height / numPicturesHigh;
 
     // Draw each image on the canvas
     for (let i = 0; i < images.length; i++) {
@@ -72,8 +77,8 @@ export const CollageEditorProvider = ({ children }) => {
   };
 
   const reset = () => {
-    changeWidth(800); // TODO make these not hardcoded
-    changeHeight(600);
+    changeWidth(DEFAULT_WIDTH);
+    changeHeight(DEFAULT_HEIGHT);
     toggleImageSwapping();
   };
 
@@ -90,7 +95,7 @@ export const CollageEditorProvider = ({ children }) => {
   const changeDistFromCenter = (dist) => {
     setDistFromCenter(dist);
     setEditMade(!editMade);
-    // TODO Disable iamge swapping so there is less noticeable difference
+    toggleImageSwapping();
   };
 
   const changeAngleNoise = (angle) => {
