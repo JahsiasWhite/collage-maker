@@ -23,8 +23,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
+  color: var(--secondary-color);
   cursor: pointer;
+  margin-top: 10px;
 }
 
 /* SVG icon */
@@ -33,7 +34,7 @@
   height: 30px;
 }
 
-.menuLabel {
+/* .menuLabel {
   font-size: 12px;
   margin-top: 10px;
-}
+} */
