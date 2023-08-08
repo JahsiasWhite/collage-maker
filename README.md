@@ -51,3 +51,31 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+## Structure
+
+├── App.js
+├── FolderA
+│ ├── ItemA1.js
+│ ├── ItemA2.js
+│ ├── ItemA3.js
+│ ├── ItemA4.js
+│ └── ItemA5.js
+├── FolderB
+│ ├── ItemB1.js
+│ ├── ItemB2.js
+│ ├── ItemB3.js
+│ ├── ItemB4.js
+│ └── ItemB5.js
+├── Item1.js
+├── Item2.js
+├── Item3.js
+├── Item4.js
+└── Item5.js
+
+App.js -> ├── Header.js
+├── MenuBar.js
+├── CollageEditor.js
+├── MainUploader.js
+
+## Features
