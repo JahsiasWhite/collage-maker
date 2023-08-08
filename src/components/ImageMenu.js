@@ -31,7 +31,7 @@ const ImageMenu = ({ show, images, deleteImage }) => {
           </li>
         ))}
       </ul> */}
-      <div>Images Uploaded:</div>
+      <div className={styles.title}>Images Uploaded:</div>
       <ImageCarousel images={images} deleteImage={deleteImage} />
       {/* {images.length > 0 && <ImageCarousel images={images} />} */}
     </div>

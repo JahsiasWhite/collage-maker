@@ -6,3 +6,7 @@
 .dimensions {
   color: var(--secondary-color);
 }
+
+.title {
+  color: var(--secondary-color);
+}

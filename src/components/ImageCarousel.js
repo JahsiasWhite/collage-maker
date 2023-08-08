@@ -1,7 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from '../styles/ImageCarousel.module.css';
 
 const ImageCarousel = ({ images, deleteImage }) => {
+  // TODO FIX THIS ! SHOULD NOT RUN SO MANY TIMES
+  // Not becuase of the useEffect, was happing prior to it
+  // For example: When uploading, this runs twice before renderCanvas() and twice again after
+
+  const [imageDimensions, setImageDimensions] = useState([]);
+
+  useEffect(() => {
+    const calculateImageDimensions = async () => {
+      const dimensions = await Promise.all(
+        images.map(async (imageSrc) => {
+          const img = new Image();
+          img.src = imageSrc;
+          await img.decode();
+          return { width: img.width, height: img.height };
+        })
+      );
+      setImageDimensions(dimensions);
+    };
+
+    calculateImageDimensions();
+  }, [images]);
+
   return (
     <div className={styles.imageCarousel}>
       {images.map((imageSrc, index) => (
@@ -11,6 +33,10 @@ const ImageCarousel = ({ images, deleteImage }) => {
             className={styles.deleteButton}
             onClick={() => deleteImage(index)}
           >
+            <div className={styles.imageDimensions}>
+              {imageDimensions[index] &&
+                `${imageDimensions[index].width}px x ${imageDimensions[index].height}px`}
+            </div>
             {/* Add your trashcan icon SVG here */}
             <svg
               xmlns="http://www.w3.org/2000/svg"

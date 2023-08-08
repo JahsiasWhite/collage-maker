@@ -8,7 +8,7 @@ const CollagePreview = () => {
 
   return (
     <div>
-      <h2>Preview:</h2>
+      <h2 className={styles.title}>Preview:</h2>
       <img
         className={styles.imgPreview}
         src={collage}

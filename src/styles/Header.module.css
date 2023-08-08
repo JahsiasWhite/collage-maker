@@ -1,5 +1,5 @@
 .header {
-  border-bottom: var(--border-size) solid var(--secondary-color);
+  /* border-bottom: var(--border-size) solid var(--secondary-color); */
   /* height: var(--header-height); */
   height: var(--header-height);
   top: 0;

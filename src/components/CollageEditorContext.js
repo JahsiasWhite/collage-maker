@@ -34,12 +34,25 @@ export const CollageEditorProvider = ({ children }) => {
   const [distFromCenter, setDistFromCenter] = useState(5);
   const [angleNoise, setAngleNoise] = useState(3);
 
+  // Create a helper function to load each image and get its native width and height
+  const getImageDimensions = async (src) =>
+    new Promise((resolve) => {
+      const image = new Image();
+      image.onload = () => {
+        resolve({ width: image.naturalWidth, height: image.naturalHeight });
+      };
+      image.src = src;
+    });
+
   /* Default / Block mode layout */
   const calculateBlockLayout = async (images, canvas, context) => {
     //TODO Fix this for example: 2 pictures uploaded, lots of whitespace below... should I crop the canvas?
     // Calculate the dimensions of each image in the collage
     const numPicturesWide = Math.ceil(Math.sqrt(images.length));
     const numPicturesHigh = Math.ceil(images.length / numPicturesWide);
+
+    // TODO If we only have one image, make the canvas the same size as the current image
+    // Also some type of auto scaling when another image is added as well
     const imageWidth = canvas.width / numPicturesWide;
     const imageHeight = canvas.height / numPicturesHigh;
 
@@ -125,16 +138,6 @@ export const CollageEditorProvider = ({ children }) => {
 
     return collageLayout;
   };
-
-  // Create a helper function to load each image and get its native width and height
-  const getImageDimensions = async (src) =>
-    new Promise((resolve) => {
-      const image = new Image();
-      image.onload = () => {
-        resolve({ width: image.naturalWidth, height: image.naturalHeight });
-      };
-      image.src = src;
-    });
 
   // Supposed to generate a nice looking collage
   const generateJahPoints = async (images, canvasWidth, canvasHeight) => {

@@ -106,16 +106,8 @@ const LayoutMenu = ({ show, options }) => {
         ))}
       </ul> */}
       <div className={styles.customOptionsList}>
-        <div className={styles.dimensionSettings}>
-          <div>Resolution</div>
-          <div className={styles.customOption}>
-            <input
-              className={styles.layoutInput}
-              type="number"
-              onChange={handleHeightChange}
-              placeholder="Enter new height"
-            />
-          </div>
+        <div className={styles.sectionContainer}>
+          <div className={styles.title}>Resolution</div>
           <div className={styles.customOption}>
             <input
               className={styles.layoutInput}
@@ -125,42 +117,61 @@ const LayoutMenu = ({ show, options }) => {
             />
           </div>
           <div className={styles.customOption}>
+            <input
+              className={styles.layoutInput}
+              type="number"
+              onChange={handleHeightChange}
+              placeholder="Enter new height"
+            />
+          </div>
+
+          <div className={styles.customOption}>
             <button className={styles.layoutButton} onClick={handleReset}>
               Reset
             </button>
           </div>
         </div>
-        <div className={`${styles.switchContainer} ${styles.customOption}`}>
-          <input
-            className={styles.toggleSwitch}
-            type="checkbox"
-            checked={mode === 'freeform'}
-            onChange={handleToggleMode}
-          />
-          <label className={styles.toggleLabel}>Freeform Mode</label>
-        </div>
-        <div className={styles.customOption}>
-          <button
-            className={`${styles.layoutButton} ${
-              mode === 'freeform' ? '' : styles.greyedOut
-            }`}
-            onClick={randomize}
+        <div>
+          <div className={`${styles.switchContainer} ${styles.customOption} `}>
+            <input
+              className={styles.toggleSwitch}
+              type="checkbox"
+              checked={mode === 'freeform'}
+              onChange={handleToggleMode}
+            />
+            <label className={styles.toggleLabel}>Freeform Mode</label>
+          </div>
+          <div
+            className={` ${styles.sectionContainer} ${
+              styles.sectionWithHeader
+            } ${mode === 'freeform' ? '' : styles.greyedOut}`}
           >
-            Randomize
-          </button>
-        </div>
-        <div className={styles.customOption}>
-          <div className="inputLabel">Noise:</div>
-          <input
-            className={styles.slider}
-            type="range"
-            min={0}
-            max={3}
-            step={0.1}
-            onChange={hangleAngleNoiseChange}
-            disabled={mode !== 'freeform'}
-          />
-          <span>{angleNoise}</span>
+            <div className={styles.customOption}>
+              <button
+                className={`${styles.layoutButton} ${
+                  mode === 'freeform' ? '' : styles.disabled
+                }`}
+                onClick={randomize}
+              >
+                Randomize
+              </button>
+            </div>
+            <div className={styles.customOption}>
+              <div className="inputLabel">Noise:</div>
+              <input
+                className={` ${styles.slider} ${
+                  mode === 'freeform' ? '' : styles.disabled
+                }`}
+                type="range"
+                min={0}
+                max={3}
+                step={0.1}
+                onChange={hangleAngleNoiseChange}
+                disabled={mode !== 'freeform'}
+              />
+              <span>{angleNoise}</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>

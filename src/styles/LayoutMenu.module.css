@@ -11,6 +11,7 @@
 
   /* TODO I dont know if I want this */
   /* opacity: 90%; */
+  color: var(--secondary-color);
 }
 
 .open {
@@ -56,6 +57,10 @@
 
 .greyedOut {
   opacity: 0.1;
+  cursor: not-allowed;
+}
+
+.disabled {
   cursor: not-allowed;
 }
 
@@ -132,11 +137,10 @@
 /* Optional: Add some styling to the label */
 .toggleLabel {
   margin-left: 10px;
-  font-weight: bold;
   user-select: none;
 }
 
-.dimensionSettings {
+.sectionContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -144,4 +148,8 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
   padding: 10px;
   margin-top: 20px;
+}
+
+.sectionWithHeader {
+  margin-top: 0px;
 }
