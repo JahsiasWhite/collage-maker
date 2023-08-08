@@ -126,11 +126,21 @@ export const CollageEditorProvider = ({ children }) => {
     return collageLayout;
   };
 
+  // Create a helper function to load each image and get its native width and height
+  const getImageDimensions = async (src) =>
+    new Promise((resolve) => {
+      const image = new Image();
+      image.onload = () => {
+        resolve({ width: image.naturalWidth, height: image.naturalHeight });
+      };
+      image.src = src;
+    });
+
   // Supposed to generate a nice looking collage
-  const generateJahPoints = (images, canvasWidth, canvasHeight) => {
+  const generateJahPoints = async (images, canvasWidth, canvasHeight) => {
     const collageLayout = [];
 
-    // Calculate the size of the image, currently all are the same
+    // Calculate the size of the image TODO Get dimensions too?
     const width = canvasWidth / 4;
     const height = canvasHeight / 4;
 
@@ -185,9 +195,12 @@ export const CollageEditorProvider = ({ children }) => {
       const x = centerX + randomRadius * Math.cos(angle);
       const y = centerY + randomRadius * Math.sin(angle);
 
-      // Calculate the size of the image (you can adjust this as needed)
-      const width = canvasWidth / 3; // maybe 4?
-      const height = width;
+      // Calculate the size of the image
+      let { width, height } = await getImageDimensions(images[i]);
+      // const width = canvasWidth / 3; // maybe 4?
+      // const height = width;
+      width = width / 2;
+      height = height / 2;
 
       // Add the position and size to the collageLayout array
       collageLayout.push({ x, y, width, height });
@@ -293,7 +306,7 @@ export const CollageEditorProvider = ({ children }) => {
       //   collageHeight
       // );
       // Calculate layout for 'freeform' mode using Poisson Disk Sampling
-      const freeformLayout = generateJahPoints(
+      const freeformLayout = await generateJahPoints(
         images,
         collageWidth,
         collageHeight
