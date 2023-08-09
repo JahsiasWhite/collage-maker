@@ -1,31 +1,20 @@
-# TODO
+<div>
+   <img src="./src/icons/logo.svg" alt="Collage Maker Logo" title="Logo" align="left" height="45" />
+</div>
 
-1. Front-end Technologies:
-   For the front-end, you can use HTML, CSS, and JavaScript. You may also want to consider using a front-end framework like React, Angular, or Vue.js for a more structured and interactive user interface.
+# Collage Maker
 
-2. Backend Technologies:
-   For the backend, you can use a server-side language such as Node.js with a framework like Express.js. This will handle user requests, image processing, and generation of collage images.
+Collage maker is a web app capable of putting together a collage from a set of pictures
 
-3. Image Manipulation:
-   To manipulate images and create collages, you can use a JavaScript library like fabric.js, Konva.js, or CamanJS. These libraries offer functionalities to handle image placement, rotation, scaling, and more.
+<p align="center">
+  <img src="./src/icons/fullscreen-with-full.png" alt="Size Limit CLI" width="738">
+</p>
 
-4. Uploading Images:
-   Allow users to upload their images for the collage creation. For this, you can use HTML's input type="file" element along with some JavaScript to handle the image uploads.
+## Installing
 
-5. Collage Generation:
-   Implement the logic to generate different arrangements of the photos. You can use various algorithms, like permutations or random placement, to create different collage layouts.
-
-6. User Interaction:
-   Implement the interface to allow users to shuffle through different collage arrangements, zoom in/out, and rotate images within the collage.
-
-7. Exporting Collage:
-   Offer users the option to download the collage as a PNG image. You can achieve this by converting the collage canvas to a data URL and providing a download link to the user.
-
-8. Transparent Background (Optional):
-   If you want to allow the option of a transparent background, you can implement a checkbox or a toggle to enable/disable transparency. Then, during the collage generation, you would need to handle transparency accordingly.
-
-9. Deployment:
-   Once you've completed the development, you'll need to deploy your web app to a hosting service. Popular options include Heroku, Netlify, or Vercel.
+```
+git clone https://github.com/JahsiasWhite/collage-maker
+```
 
 ## Running
 
@@ -52,34 +41,15 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-## Structure
-
-├── App.js
-├── FolderA
-│ ├── ItemA1.js
-│ ├── ItemA2.js
-│ ├── ItemA3.js
-│ ├── ItemA4.js
-│ └── ItemA5.js
-├── FolderB
-│ ├── ItemB1.js
-│ ├── ItemB2.js
-│ ├── ItemB3.js
-│ ├── ItemB4.js
-│ └── ItemB5.js
-├── Item1.js
-├── Item2.js
-├── Item3.js
-├── Item4.js
-└── Item5.js
-
-App.js -> ├── Header.js
-├── MenuBar.js
-├── CollageEditor.js
-├── MainUploader.js
-
 ## Features
 
-- Upload unlimited files in a collage
+- Upload unlimited files to a collage
 - Edit resolution
 - Different layout modes
+
+## Roadmap
+
+- Different export options, example: export to png
+- Imporve existing layout modes
+- New layout modes
+- Better scaling for different screen sizes
