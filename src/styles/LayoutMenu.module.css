@@ -8,6 +8,7 @@
   width: 300px; /* Set the width of the menu */
   transform: translateX(-100%); /* Initially hide the menu to the left */
   transition: transform 1s ease; /* Add a smooth transition */
+  background-color: #585656;
 
   /* TODO I dont know if I want this */
   /* opacity: 90%; */

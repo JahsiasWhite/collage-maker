@@ -48,12 +48,16 @@ export const CollageEditorProvider = ({ children }) => {
   const calculateBlockLayout = async (images, canvas, context) => {
     //TODO Fix this for example: 2 pictures uploaded, lots of whitespace below... should I crop the canvas?
     // Calculate the dimensions of each image in the collage
-    const numPicturesWide = Math.ceil(Math.sqrt(images.length));
-    const numPicturesHigh = Math.ceil(images.length / numPicturesWide);
+    // Adds the pictures horizontally
+    // const numPicturesWide = Math.ceil(Math.sqrt(images.length));
+    // const numPicturesHigh = Math.ceil(images.length / numPicturesWide);
+    // Adds the pictures vertically
+    const numPicturesHigh = Math.ceil(Math.sqrt(images.length));
+    const numPicturesWide = Math.ceil(images.length / numPicturesHigh);
 
     // TODO If we only have one image, make the canvas the same size as the current image
     // Also some type of auto scaling when another image is added as well
-    const imageWidth = canvas.width / numPicturesWide;
+    let imageWidth = canvas.width / numPicturesWide;
     const imageHeight = canvas.height / numPicturesHigh;
 
     // Draw each image on the canvas
@@ -61,13 +65,28 @@ export const CollageEditorProvider = ({ children }) => {
       const image = new Image();
       image.src = images[i];
 
-      // Wait for the image to load before drawing
-      await new Promise((resolve) => {
-        image.onload = () => resolve();
-      });
+      // Get the iamge dimensions, also lets us wait for the image to load :)
+      let { width, height } = await getImageDimensions(images[i]);
 
-      const x = (i % numPicturesWide) * imageWidth;
-      const y = Math.floor(i / numPicturesWide) * imageHeight;
+      // If there is this large of a difference between the two images,
+      if (width < imageWidth / 2) {
+        // maybe actuallY : imageWidth / (numPicturesWide * 2)
+        imageWidth /= 2;
+      }
+
+      // changeHeight(image.width);
+      // const imageWidth = width;
+      // const imageHeight = height / 2;
+
+      // Adds the pictures horizontally
+      // const x = (i % numPicturesWide) * imageWidth;
+      // const y = Math.floor(i / numPicturesWide) * imageHeight;
+
+      // Adds the pictures vertically
+      // const x = Math.floor(i / numPicturesHigh) * imageWidth;
+      const x = (canvas.width - imageWidth) / 2;
+      const y = (i % numPicturesHigh) * imageHeight;
+
       context.drawImage(image, x, y, imageWidth, imageHeight);
     }
   };

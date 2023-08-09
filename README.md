@@ -79,3 +79,7 @@ App.js -> ├── Header.js
 ├── MainUploader.js
 
 ## Features
+
+- Upload unlimited files in a collage
+- Edit resolution
+- Different layout modes
