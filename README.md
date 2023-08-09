@@ -7,7 +7,10 @@
 Collage maker is a web app capable of putting together a collage from a set of pictures
 
 <p align="center">
-  <img src="./src/icons/fullscreen-with-full.png" alt="Size Limit CLI" width="738">
+  <img src="./src/icons/fullscreen-with-full.png" alt="Size Limit CLI" width="738" >
+</p>
+<p align="center">
+  <img src="./src/icons/preview-4-freeform.png" alt="Size Limit CLI" width="738" >
 </p>
 
 ## Installing
@@ -45,7 +48,8 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 - Upload unlimited files to a collage
 - Edit resolution
-- Different layout modes
+- Block Layout mode
+- Freeform Layout mode
 
 ## Roadmap
 
