@@ -1,5 +1,5 @@
 <div>
-   <img src="./src/icons/logo.svg" alt="Collage Maker Logo" title="Logo" align="left" height="45" />
+   <img src="./src/icons/logo.svg" alt="Collage Maker Logo" title="Logo" align="left" height="70px" />
 </div>
 
 # Collage Maker
