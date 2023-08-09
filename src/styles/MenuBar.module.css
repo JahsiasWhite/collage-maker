@@ -34,22 +34,25 @@
   border: none;
   background-color: transparent;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+
+  width: 70%;
+  padding: 5px;
 }
 
 .menuButton:hover {
-  background-color: #e0e0e0;
+  /* background-color: #e0e0e0; */
+  opacity: 50%;
 }
-
-/* SVG icon */
-.menuIcon {
-  width: 30px;
-  height: 30px;
+.open {
+  /* background-color: rgba(52, 152, 219, 0.5); */
+  opacity: 0.5;
 }
 
 .menuLabel {
   font-size: 12px;
   margin-top: 10px;
+  cursor: pointer;
 
   display: flex;
   flex-direction: column;

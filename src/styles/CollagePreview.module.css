@@ -4,9 +4,9 @@
 }
 
 .dimensions {
-  color: var(--secondary-color);
+  color: var(--background-color);
 }
 
 .title {
-  color: var(--secondary-color);
+  color: var(--background-color);
 }

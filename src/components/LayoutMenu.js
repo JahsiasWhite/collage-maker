@@ -131,7 +131,7 @@ const LayoutMenu = ({ show, options }) => {
             </button>
           </div>
         </div>
-        <div>
+        <div className={styles.groupContainer}>
           <div className={`${styles.switchContainer} ${styles.customOption} `}>
             <input
               className={styles.toggleSwitch}

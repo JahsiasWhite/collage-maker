@@ -1,6 +1,8 @@
 import React, { useRef } from 'react';
 import styles from '../styles/LargeImageUpload.module.css';
-import Icon1 from '../icons/Icon1';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFileArrowUp } from '@fortawesome/free-solid-svg-icons';
 
 const ImageUpload = ({ onImageUpload }) => {
   //TODO put this in a context right?? It is a duplicate of ImageUpload
@@ -44,10 +46,8 @@ const ImageUpload = ({ onImageUpload }) => {
 
   return (
     <div className={styles.menuButton} onClick={handleMenuButtonClick}>
+      <FontAwesomeIcon icon={faFileArrowUp} className={styles.icon} />
       <label htmlFor="file-upload" className={styles.menuLabel}>
-        {/* <div className={styles.menuIcon}>
-          <Icon1 />
-        </div> */}
         <div className={styles.menuLabel}>Upload</div>
       </label>
       <input

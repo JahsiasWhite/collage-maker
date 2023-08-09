@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from '../styles/MenuBar.module.css';
-import Icon1 from '../icons/Icon1';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFileArrowDown } from '@fortawesome/free-solid-svg-icons';
 
 import { useCollageEditor } from './CollageEditorContext';
 
@@ -55,9 +56,7 @@ const CollageExporter = () => {
     //   <button onClick={handleExport}>Export Collage</button>
     // </div>
     <div className={styles.menuButton} onClick={handleExport}>
-      <div className={styles.menuIcon}>
-        <Icon1></Icon1>
-      </div>
+      <FontAwesomeIcon icon={faFileArrowDown} />
       <div className={styles.menuLabel}>Download</div>
     </div>
   );
