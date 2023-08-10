@@ -10,7 +10,7 @@ Collage maker is a web app capable of putting together a collage from a set of p
   <img src="./src/icons/fullscreen-with-full.png" alt="Size Limit CLI" width="738" >
 </p>
 <p align="center">
-  <img src="./src/icons/preview-4-freeform.png" alt="Size Limit CLI" width="738" >
+  <img src="./src/icons/preview-4-freeform.png" alt="Size Limit CLI" width="738" height="500">
 </p>
 
 ## Installing
