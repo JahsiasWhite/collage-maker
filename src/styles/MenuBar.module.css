@@ -8,7 +8,9 @@
   width: var(--menu-width);
   height: 100%;
 
-  border-top: 1px #166051 solid;
+  border-top: 2px var(--secondary-color) black solid;
+  border-right: 2px var(--secondary-color) solid;
+
   /* border-right: var(--border-size) solid var(--secondary-color); */
   background-color: var(--background-color);
   color: var(--secondary-color);

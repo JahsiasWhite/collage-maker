@@ -3,12 +3,12 @@
 
 :root {
   /* --background-color: #36393b; */
-  --background-color: #23967f;
+  --background-color: #342e37;
   /* --background-color: rgb(53, 51, 51); */
   --secondary-color: white; /* Text color */
 
   --border-size: 0.2vh;
-  --header-height: 8vh;
+  --header-height: 5vh;
   --menu-width: 5vw;
 }
 

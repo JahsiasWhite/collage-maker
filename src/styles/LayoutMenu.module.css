@@ -2,7 +2,8 @@
   z-index: 1;
   background-color: grey;
   position: fixed;
-  top: calc(var(--header-height) + var(--border-size));
+  top: var(--header-height);
+  border-right: 2px var(--secondary-color) solid;
   left: 0;
   height: 94vh;
   width: 300px; /* Set the width of the menu */
@@ -18,7 +19,7 @@
 .open {
   /* background-color: blue; */
   /* transform: translateX(200%); */
-  transform: translateX(calc(var(--menu-width) + var(--border-size)));
+  transform: translateX(var(--menu-width));
 }
 
 .customOptionsList {
