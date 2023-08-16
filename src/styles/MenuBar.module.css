@@ -3,10 +3,12 @@
 .menuBar {
   position: fixed;
   left: 0;
-  top: calc(var(--header-height) + var(--border-size));
+  top: var(--header-height);
   height: 100%;
   width: var(--menu-width);
   height: 100%;
+
+  border-top: 1px #166051 solid;
   /* border-right: var(--border-size) solid var(--secondary-color); */
   background-color: var(--background-color);
   color: var(--secondary-color);

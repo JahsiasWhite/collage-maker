@@ -2,7 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
 :root {
-  --background-color: #36393b;
+  /* --background-color: #36393b; */
+  --background-color: #23967f;
   /* --background-color: rgb(53, 51, 51); */
   --secondary-color: white; /* Text color */
 
@@ -12,7 +13,7 @@
 }
 
 html {
-  background-color: var(--background-color);
+  /* background-color: var(--background-color); */
   height: 100%; /* Set the height of the root element */
 }
 
@@ -54,10 +55,12 @@ body {
   overflow: auto; /* Add overflow to enable scrolling if content exceeds the available space */
   position: fixed;
   width: 94vw;
-  height: 94vh;
+  height: 90vh;
   /* top: 5.1vh; */
-  top: calc(var(--header-height) + var(--border-size));
-  left: calc(var(--menu-width) + var(--border-size));
+  /* top: calc(var(--header-height) + var(--border-size));
+  left: calc(var(--menu-width) + var(--border-size)); */
+  right: 0;
+  bottom: 0;
 }
 
 .mainUploader {

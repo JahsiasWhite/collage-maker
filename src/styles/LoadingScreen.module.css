@@ -1,0 +1,22 @@
+.loadingScreen {
+  background-color: #23967f;
+  z-index: 3;
+  width: 100vw;
+  position: fixed;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center; /* Horizontally center content */
+  align-items: center; /* Vertically center content */
+}
+
+.loadingScreenText {
+  color: white;
+  position: relative;
+  font-size: 6rem;
+}
+
+.doneLoading {
+  opacity: 0;
+  transition: opacity 1s ease-in;
+}

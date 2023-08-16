@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Header from './components/Header';
 import MenuBar from './components/MenuBar';
@@ -7,6 +7,7 @@ import CollageEditor from './components/CollageEditor';
 import LayoutMenu from './components/LayoutMenu';
 import ImageMenu from './components/ImageMenu';
 import MainUploader from './components/MainUploader';
+import LoadingScreen from './components/LoadingScreen';
 
 // CONTEXT
 import { CollageEditorProvider } from './components/CollageEditorContext'; // So we can talk to the editor directly, NO PROP DRILLING YAY!!
@@ -51,6 +52,7 @@ function App() {
   return (
     <CollageEditorProvider>
       <div className="App">
+        <LoadingScreen></LoadingScreen>
         <Header></Header>
         <MenuBar
           handleImageUpload={handleImageUpload}
