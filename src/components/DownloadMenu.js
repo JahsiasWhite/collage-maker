@@ -5,22 +5,6 @@ import { useCollageEditor } from './CollageEditorContext';
 const DownloadMenu = ({ show }) => {
   const { collage } = useCollageEditor();
 
-  // SVG EXPORT
-  const handleExport = () => {
-    if (collage) {
-      const svgMarkup = getSVGMarkup(collage);
-
-      // Convert the SVG markup to a Blob
-      const blob = new Blob([svgMarkup], { type: 'image/svg+xml' });
-
-      // Create a downloadable link for the SVG file
-      const link = document.createElement('a');
-      link.download = 'collage.svg';
-      link.href = URL.createObjectURL(blob);
-      link.click();
-    }
-  };
-
   // Turns the data URL into an SVG markup
   const getSVGMarkup = (collage) => {
     const svgWidth = 400;
@@ -48,7 +32,20 @@ const DownloadMenu = ({ show }) => {
     return serializer.serializeToString(svg);
   };
 
-  const handleExportSvg = () => {};
+  const handleExportSvg = () => {
+    if (collage) {
+      const svgMarkup = getSVGMarkup(collage);
+
+      // Convert the SVG markup to a Blob
+      const blob = new Blob([svgMarkup], { type: 'image/svg+xml' });
+
+      // Create a downloadable link for the SVG file
+      const link = document.createElement('a');
+      link.download = 'collage.svg';
+      link.href = URL.createObjectURL(blob);
+      link.click();
+    }
+  };
   const handleExportPng = () => {};
 
   return (
