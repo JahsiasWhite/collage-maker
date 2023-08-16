@@ -22,6 +22,7 @@ body {
   display: flex; /* Use flexbox for layout */
   flex-direction: column; /* Arrange children in a column */
   min-height: 100vh; /* Ensure the body fills the entire viewport height */
+  /* background-color: #8e8e8e; */
 }
 
 .App {

@@ -11,8 +11,6 @@
 
   display: flex; /* Use flexbox layout */
   align-items: center; /* Align items vertically in the center */
-
-  border-bottom: 2px var(--secondary-color) solid;
 }
 
 .logo {

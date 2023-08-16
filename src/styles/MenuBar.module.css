@@ -5,11 +5,11 @@
   left: 0;
   top: var(--header-height);
   height: 100%;
-  width: var(--menu-width);
+  width: calc(var(--menu-width) * 1.5);
+  min-width: 100px;
   height: 100%;
 
   border-top: 2px var(--secondary-color) black solid;
-  border-right: 2px var(--secondary-color) solid;
 
   /* border-right: var(--border-size) solid var(--secondary-color); */
   background-color: var(--background-color);
@@ -31,17 +31,18 @@
   color: var(--secondary-color);
 
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   align-items: center;
   justify-content: center;
+  height: 3%;
 
   border: none;
   background-color: transparent;
   cursor: pointer;
   transition: background-color 0.2s ease, opacity 0.2s ease;
 
-  width: 70%;
-  padding: 5px;
+  /* width: 70%; */
+  width: 100%;
 }
 
 .menuButton:hover {
@@ -51,12 +52,13 @@
 .open {
   /* background-color: rgba(52, 152, 219, 0.5); */
   opacity: 0.5;
+  background: #8e8e8e;
 }
 
 .menuLabel {
   font-size: 15px;
-  margin-top: 10px;
   cursor: pointer;
+  margin-left: 5px;
 
   display: flex;
   flex-direction: column;

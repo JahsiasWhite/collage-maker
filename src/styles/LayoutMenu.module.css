@@ -3,9 +3,8 @@
   background-color: grey;
   position: fixed;
   top: var(--header-height);
-  border-right: 2px var(--secondary-color) solid;
   left: 0;
-  height: 94vh;
+  height: 100%;
   width: 300px; /* Set the width of the menu */
   transform: translateX(-100%); /* Initially hide the menu to the left */
   transition: transform 1s ease; /* Add a smooth transition */
@@ -19,7 +18,7 @@
 .open {
   /* background-color: blue; */
   /* transform: translateX(200%); */
-  transform: translateX(var(--menu-width));
+  transform: translateX(calc(var(--menu-width) + 13%));
 }
 
 .customOptionsList {

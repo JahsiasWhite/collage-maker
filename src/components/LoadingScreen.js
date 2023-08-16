@@ -9,7 +9,7 @@ const LoadingScreen = () => {
     // Simulate loading delay
     const timeout = setTimeout(() => {
       setFadeOut(true);
-    }, 3000); // Adjust the delay as needed
+    }, 1000); // Adjust the delay as needed
 
     // Clear timeout if the component is unmounted or fading out
     return () => clearTimeout(timeout);
