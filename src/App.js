@@ -8,6 +8,7 @@ import LayoutMenu from './components/LayoutMenu';
 import ImageMenu from './components/ImageMenu';
 import MainUploader from './components/MainUploader';
 import LoadingScreen from './components/LoadingScreen';
+import DownloadMenu from './components/DownloadMenu';
 
 // CONTEXT
 import { CollageEditorProvider } from './components/CollageEditorContext'; // So we can talk to the editor directly, NO PROP DRILLING YAY!!
@@ -15,8 +16,10 @@ import { CollageEditorProvider } from './components/CollageEditorContext'; // So
 function App() {
   const [images, setImages] = useState([]);
   // const [collage, setCollage] = useState(null);
+
   const [isCollageLayoutOpen, setIsCollageLayoutOpen] = useState(false);
   const [isImageMenuOpen, setIsImageMenuOpen] = useState(false);
+  const [isDownloadMenuOpen, setIsDownloadMenuOpen] = useState(false);
 
   // Individual Images
   const handleImageUpload = (uploadedImages) => {
@@ -49,6 +52,11 @@ function App() {
     setIsImageMenuOpen((prev) => !prev);
   };
 
+  // Function to toggle the visibility of DownloadMenu
+  const toggleDownloadMenu = () => {
+    setIsDownloadMenuOpen((prev) => !prev);
+  };
+
   return (
     <CollageEditorProvider>
       <div className="App">
@@ -58,6 +66,7 @@ function App() {
           handleImageUpload={handleImageUpload}
           toggleCollageLayout={toggleCollageLayout}
           toggleImageMenu={toggleImageMenu}
+          toggleDownloadMenu={toggleDownloadMenu}
         />{' '}
         <CollageEditor images={images}></CollageEditor>
         <div className="middleContent">
@@ -74,6 +83,7 @@ function App() {
           images={images}
           deleteImage={handleDeleteImage}
         />
+        <DownloadMenu show={isDownloadMenuOpen}></DownloadMenu>
       </div>
     </CollageEditorProvider>
   );

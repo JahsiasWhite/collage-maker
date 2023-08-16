@@ -13,13 +13,14 @@ const MenuBar = ({
   handleImageUpload,
   toggleCollageLayout,
   toggleImageMenu,
+  toggleDownloadMenu,
 }) => {
   return (
     <div className={styles.menuBar}>
       <ImageUpload onImageUpload={handleImageUpload} />
       <CollageLayout onToggle={toggleCollageLayout} />
       <CollageImages onToggle={toggleImageMenu} />
-      <CollageExporter />
+      <CollageExporter onToggle={toggleDownloadMenu} />
     </div>
   );
 };

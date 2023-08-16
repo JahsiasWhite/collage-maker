@@ -13,12 +13,16 @@
   /* TODO I dont know if I want this */
   /* opacity: 90%; */
   color: var(--text-color);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .open {
   /* background-color: blue; */
   /* transform: translateX(200%); */
-  transform: translateX(calc(var(--menu-width) + 13%));
+  transform: translateX(calc(var(--menu-width) + 21%));
   background-color: var(--secondary-color);
 }
 
@@ -158,4 +162,27 @@
 
 .groupContainer {
   margin-top: 30px;
+}
+
+.exportButton {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: #6f8f72;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+
+  margin-top: 20px;
+}
+
+.exportButton:hover {
+  background-color: #77ad78;
+}
+
+.exportButton:first-child {
+  margin-top: 40px;
 }
