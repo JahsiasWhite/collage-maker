@@ -8,17 +8,18 @@
   width: 300px; /* Set the width of the menu */
   transform: translateX(-100%); /* Initially hide the menu to the left */
   transition: transform 1s ease; /* Add a smooth transition */
-  background-color: #585656;
+  background-color: var(--secondary-color);
 
   /* TODO I dont know if I want this */
   /* opacity: 90%; */
-  color: var(--secondary-color);
+  color: var(--text-color);
 }
 
 .open {
   /* background-color: blue; */
   /* transform: translateX(200%); */
   transform: translateX(calc(var(--menu-width) + 13%));
+  background-color: var(--secondary-color);
 }
 
 .customOptionsList {
@@ -40,7 +41,7 @@
 
 .layoutButton {
   /* display: inline-block; */
-  color: var(--secondary-color);
+  color: var(--text-color);
   padding: 10px 20px;
   background-color: black;
   /* color: var(--background-color); */
@@ -66,7 +67,7 @@
 }
 
 .layoutInput {
-  border: 2px solid var(--secondary-color); /* Use --secondary-color variable for border color */
+  border: 2px solid var(--text-color); /* Use --text-color variable for border color */
   border-radius: 5px;
   padding: 5px;
 }
@@ -106,7 +107,7 @@
   width: 60px;
   height: 30px;
   appearance: none;
-  background-color: var(--secondary-color);
+  background-color: var(--text-color);
   border-radius: 15px;
   /* outline: none; */
   cursor: pointer;
@@ -132,7 +133,7 @@
 
 .toggleSwitch:checked:before {
   transform: translateX(30px);
-  background-color: var(--secondary-color);
+  background-color: var(--text-color);
 }
 
 /* Optional: Add some styling to the label */

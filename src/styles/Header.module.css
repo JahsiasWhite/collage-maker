@@ -1,12 +1,12 @@
 .header {
-  /* border-bottom: var(--border-size) solid var(--secondary-color); */
+  /* border-bottom: var(--border-size) solid var(--text-color); */
   /* height: var(--header-height); */
   height: var(--header-height);
   top: 0;
   position: relative;
   width: 100%;
   background-color: var(--background-color);
-  color: var(--secondary-color);
+  color: var(--text-color);
   z-index: 2;
 
   display: flex; /* Use flexbox layout */

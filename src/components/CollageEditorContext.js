@@ -304,7 +304,6 @@ export const CollageEditorProvider = ({ children }) => {
 
   // Function to render the canvas based on the selected mode
   const renderCanvas = async (images) => {
-    console.error('RUNNING');
     // Create a temporary canvas to draw the images
     const canvas = document.createElement('canvas');
     const context = canvas.getContext('2d');
