@@ -56,7 +56,7 @@ const CollageExporter = () => {
     //   <button onClick={handleExport}>Export Collage</button>
     // </div>
     <div className={styles.menuButton} onClick={handleExport}>
-      <FontAwesomeIcon icon={faFileArrowDown} />
+      <FontAwesomeIcon className={styles.icon} icon={faFileArrowDown} />
       <div className={styles.menuLabel}>Download</div>
     </div>
   );

@@ -39,7 +39,7 @@ const ImageUpload = ({ onImageUpload }) => {
   return (
     <div className={styles.menuButton}>
       <label htmlFor="file-upload" className={styles.menuLabel}>
-        <FontAwesomeIcon icon={faFileArrowUp} />
+        <FontAwesomeIcon className={styles.icon} icon={faFileArrowUp} />
         <div className={styles.menuLabel}>Upload</div>
       </label>
       <input

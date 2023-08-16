@@ -2,13 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
 :root {
-  --background-color: black;
+  --background-color: #36393b;
   /* --background-color: rgb(53, 51, 51); */
-  --secondary-color: white;
+  --secondary-color: white; /* Text color */
 
   --border-size: 0.2vh;
-  --header-height: 5vh;
-  /* --menu-border-width: 0.2vw; */
+  --header-height: 8vh;
   --menu-width: 5vw;
 }
 
@@ -30,7 +29,12 @@ body {
   flex-direction: column; /* Arrange children in a column */
   align-items: center; /* Center children horizontally */
 
-  font-family: 'Roboto', sans-serif;
+  font-family: 'TrueDreamRegular', sans-serif;
+}
+
+@font-face {
+  font-family: 'TrueDreamRegular';
+  src: url('./styles/Trueno-wml2.otf');
 }
 
 /* img {

@@ -17,7 +17,7 @@ const CollageImages = ({ onToggle }) => {
       className={` ${styles.menuButton} ${imagesClicked ? styles.open : ''}`}
       onClick={handleClick}
     >
-      <FontAwesomeIcon icon={faImages} />
+      <FontAwesomeIcon className={styles.icon} icon={faImages} />
       <div className={styles.menuLabel}>Images</div>
     </div>
   );

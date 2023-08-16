@@ -19,7 +19,7 @@ const CollageEditor = ({ onToggle }) => {
       className={` ${styles.menuButton} ${layoutClicked ? styles.open : ''}`}
       onClick={handleClick}
     >
-      <FontAwesomeIcon icon={faGears} />
+      <FontAwesomeIcon className={styles.icon} icon={faGears} />
       <div className={styles.menuLabel}>Layout</div>
     </div>
   );
