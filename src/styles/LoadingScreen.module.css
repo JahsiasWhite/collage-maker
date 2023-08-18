@@ -1,5 +1,7 @@
 .loadingScreen {
-  background-color: #23967f;
+  /* background-color: #23967f; <- Nice green color */
+  background-color: #203245; /* <- Nice blue color */
+  /* background-color: #362243; */
   z-index: 3;
   width: 100vw;
   position: fixed;
@@ -8,15 +10,22 @@
   display: flex;
   justify-content: center; /* Horizontally center content */
   align-items: center; /* Vertically center content */
+  flex-direction: column;
 }
 
 .loadingScreenText {
-  color: white;
+  color: var(--text-color);
   position: relative;
-  font-size: 6rem;
+  font-size: 9vw;
 }
 
 .doneLoading {
   opacity: 0;
   transition: opacity 1s ease-in;
+}
+
+.logo {
+  /* background-color: #db5034; */
+  background-color: #e76f51;
+  border-radius: 50%;
 }

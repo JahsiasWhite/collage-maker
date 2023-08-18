@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../styles/LoadingScreen.module.css';
+import logo from '../icons/logo.svg';
 
 const LoadingScreen = () => {
   const [loading, setLoading] = useState(true);
@@ -25,6 +26,7 @@ const LoadingScreen = () => {
       return () => clearTimeout(timeout);
     }
   }, [fadeOut]);
+
   if (loading) {
     return (
       <div
@@ -32,6 +34,7 @@ const LoadingScreen = () => {
           fadeOut ? styles.doneLoading : ''
         }`}
       >
+        <img className={styles.logo} src={logo} alt="App Logo"></img>
         <div className={styles.loadingScreenText}>Photo Collage Maker</div>
       </div>
     );

@@ -22,7 +22,9 @@
 .open {
   /* background-color: blue; */
   /* transform: translateX(200%); */
-  transform: translateX(calc(var(--menu-width) + 21%));
+  transform: translateX(
+    calc(var(--menu-width) * 1.45)
+  ); /* The menu is set to * 1.45 elsewhere, can I just do that where I set the variable? */
   background-color: var(--secondary-color);
 }
 
@@ -47,7 +49,7 @@
   /* display: inline-block; */
   color: var(--text-color);
   padding: 10px 20px;
-  background-color: black;
+  background-color: var(--color-button);
   /* color: var(--background-color); */
   font-size: 16px;
   /* font-weight: bold; */
@@ -169,7 +171,7 @@
   font-size: 16px;
   font-weight: bold;
   color: white;
-  background-color: #6f8f72;
+  background-color: #4b8f8c;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -180,7 +182,7 @@
 }
 
 .exportButton:hover {
-  background-color: #77ad78;
+  background-color: #59a09d;
 }
 
 .exportButton:first-child {

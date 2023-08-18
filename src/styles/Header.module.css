@@ -14,9 +14,14 @@
 }
 
 .logo {
+  margin-left: 15px;
   margin-right: 10px; /* Add some spacing between the logo and the title */
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
+
+  /* Background */
+  background-color: #e76f51;
+  border-radius: 50%;
 }
 
 .title {

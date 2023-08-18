@@ -1,14 +1,14 @@
 <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg" >
         {/* <!-- Rectangle in the middle --> */}
-        <rect x="75" y="75" width="70" height="70" fill="none" stroke="white" />
+        <rect x="70" y="75" width="70" height="70" fill="none" stroke="white" />
 
         {/* <!-- Surrounding rectangles --> */}
         {/* <!-- Top rectangle --> */}
-        <rect x="105" y="35" width="50" height="50" fill="none" stroke="white" />
+        <rect x="95" y="35" width="50" height="50" fill="none" stroke="white" />
         {/* <!-- Bottom rectangle --> */}
-        <rect x="55" y="100" width="40" height="60" fill="none" stroke="white" />
+        <rect x="50" y="100" width="40" height="60" fill="none" stroke="white" />
         {/* <!-- Left rectangle --> */}
         <!-- <rect x="35" y="55" width="50" height="50" fill="yellow" /> -->
         {/* <!-- Right rectangle --> */}
-        <rect x="115" y="105" width="50" height="30" fill="none" stroke="white" />
+        <rect x="110" y="105" width="50" height="30" fill="none" stroke="white" />
       </svg>

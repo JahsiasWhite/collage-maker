@@ -1,12 +1,16 @@
-/* TODO Get a real font going */
+/* TODO: Get a real font going */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
 :root {
   /* --background-color: #36393b; */
-  --background-color: #342e37;
+  /* --background-color: #342e37; */
+  --background-color: #203245;
   /* --background-color: rgb(53, 51, 51); */
   --text-color: white;
-  --secondary-color: #5d5362;
+  --secondary-color: #2a4057;
+  /* TODO: This isnt a button color, but the secondary, RENAME ! Also rename all the color variables! */
+  --color-button: #e76f51;
+  --color-preview-background: #f8fbff;
 
   --border-size: 0.2vh;
   --header-height: 5vh;
@@ -23,7 +27,7 @@ body {
   display: flex; /* Use flexbox for layout */
   flex-direction: column; /* Arrange children in a column */
   min-height: 100vh; /* Ensure the body fills the entire viewport height */
-  /* background-color: #8e8e8e; */
+  background-color: var(--color-preview-background);
 }
 
 .App {
@@ -46,7 +50,7 @@ body {
 } */
 
 .middleContent {
-  background-color: white;
+  background-color: var(--color-preview-background);
   /* background-color: var(--background-color); */
   /* background-color: #a6b8b1; */
   /* border: 1px solid #ccc; */
