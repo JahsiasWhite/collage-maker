@@ -46,7 +46,25 @@ const DownloadMenu = ({ show }) => {
       link.click();
     }
   };
-  const handleExportPng = () => {};
+  /* I think collage is a png? */
+  const handleExportPng = () => {
+    fetch(collage)
+      .then((response) => response.blob())
+      .then((blob) => {
+        const file = new File([blob], 'sample.png', { type: blob.type });
+
+        // Create a downloadable link for the File object
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(file);
+        link.download = 'collage.png';
+
+        // Programmatically click on the link to trigger download
+        link.click();
+
+        // Clean up URL.createObjectURL() resources
+        URL.revokeObjectURL(link.href);
+      });
+  };
 
   return (
     <div className={`${styles.layoutMenu} ${show ? styles.open : ''}`}>
