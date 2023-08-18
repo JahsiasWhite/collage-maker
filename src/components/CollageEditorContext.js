@@ -69,10 +69,11 @@ export const CollageEditorProvider = ({ children }) => {
       let { width, height } = await getImageDimensions(images[i]);
 
       // If there is this large of a difference between the two images,
-      if (width < imageWidth / 2) {
-        // maybe actuallY : imageWidth / (numPicturesWide * 2)
-        imageWidth /= 2;
-      }
+      // console.error('CHANGING', width, imageWidth);
+      // if (width < imageWidth / 2) {
+      //   // maybe actuallY : imageWidth / (numPicturesWide * 2)
+      //   imageWidth /= numPicturesWide * 2;
+      // }
 
       // changeHeight(image.width);
       // const imageWidth = width;

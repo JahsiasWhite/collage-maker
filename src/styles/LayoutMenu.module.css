@@ -156,6 +156,8 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
   padding: 10px;
   margin-top: 20px;
+
+  border-radius: 3%;
 }
 
 .sectionWithHeader {
