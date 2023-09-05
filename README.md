@@ -1,13 +1,9 @@
-<div>
-   <img src="./src/icons/logo.svg" alt="Collage Maker Logo" title="Logo" align="left" height="70px" />
-</div>
-
 # Collage Maker
 
-Collage maker is a web app capable of putting together a collage from a set of pictures
+Collage maker is a web app capable of putting together a collage from a set of pictures as well as additional image customization.
 
 <p align="center">
-  <img src="./src/icons/fullscreen-with-full.png" alt="Size Limit CLI" width="738" >
+  <img src="./src/icons/block-pic.png" alt="Size Limit CLI" width="738" >
 </p>
 
 ## Installing

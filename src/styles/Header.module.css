@@ -16,8 +16,8 @@
 .logo {
   margin-left: 15px;
   margin-right: 10px; /* Add some spacing between the logo and the title */
-  width: 60px;
-  height: 60px;
+  width: calc(var(--header-height) * 0.8);
+  height: calc(var(--header-height) * 0.8);
 
   /* Background */
   background-color: #e76f51;
@@ -27,5 +27,5 @@
 .title {
   font-size: 30px;
   text-align: left;
-  padding: 12px;
+  /* padding: 12px; */
 }
